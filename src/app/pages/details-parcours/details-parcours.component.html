@@ -1,0 +1,236 @@
+<mat-toolbar color="secondary" class="mat-elevation-z8">
+  <button (click)="drawer.toggle()" mat-icon-button>
+    <mat-icon>menu</mat-icon>
+  </button>
+  <a href="https://www.slc-assurances.fr" target="_blank">
+    <img src="https://www.slc-assurances.fr/image/logo-slc.png" alt="Logo cliquable" style="width: 200px; height: auto;">
+  </a>
+
+  <span class="example-spacer"></span>
+  <button routerLink="" mat-button style="margin-left: 20px;"><mat-icon>home</mat-icon>Home</button>
+  <button mat-button><mat-icon>person</mat-icon>Profile</button>
+  <button routerLink="input" mat-button style="margin-left: 500px;"><mat-icon>search</mat-icon>Search</button>
+</mat-toolbar>
+<mat-drawer-container autosize style="background-color:rgb(227, 221, 235)" >
+  <mat-drawer #drawer opened="true" mode="side" position="start" style="background-color:rgb(184, 184, 188)">
+  <mat-nav-list >
+
+      <mat-list-item>
+          <button routerLink="/affaire"   mat-button><mat-icon>edit</mat-icon> Parcours</button>
+      </mat-list-item>
+      <mat-list-item>
+        <button routerLink="/affaire"  mat-button><mat-icon>edit</mat-icon> Affaires</button>
+    </mat-list-item>
+      <mat-list-item>
+          <button routerLink="/souscription" mat-button><mat-icon>edit</mat-icon> Souscription</button>
+      </mat-list-item>
+      <mat-list-item>
+          <button routerLink="/etape" mat-button><mat-icon>edit</mat-icon> Etape</button>
+      </mat-list-item>
+      <mat-list-item>
+          <button routerLink="/question" mat-button><mat-icon>edit</mat-icon> Questions</button>
+      </mat-list-item>
+      <mat-list-item>
+          <button routerLink="/reponse"  mat-button><mat-icon>edit</mat-icon> Reponse</button>
+      </mat-list-item>
+      <mat-list-item>
+        <button mat-button><mat-icon>edit</mat-icon> Assurés</button>
+    </mat-list-item>
+      <mat-list-item>
+          <button routerLink="/conjoint" mat-button><mat-icon>edit</mat-icon> Conjoint</button>
+      </mat-list-item>
+      <mat-list-item>
+        <button  routerLink="/enfant" mat-button><mat-icon>edit</mat-icon> Enfant</button>
+    </mat-list-item>
+
+  </mat-nav-list>
+  </mat-drawer>
+  <mat-drawer-content >
+
+
+
+
+    <div style="text-align: center; min-height: 600px;" style="margin-left: 35px;">
+      <div class="row">
+
+
+
+
+///////////////////////////
+
+<h1>Modifier Parcours</h1>
+<div class="submit-form">
+        <div *ngIf="!submitted">
+            <div class="row" >
+
+                <fieldset style="border: 2px solid #706e6e; border-radius: 10px; padding: 20px;">
+                     <legend>{{parcour.name}}</legend>
+
+                      <div class="form-group">
+                        <label for="nom">Name de parcours</label>
+                        <input type="text" class="form-control" id="nom1"  [(ngModel)]="parcour.name"  name="first" >
+                      </div>
+
+
+                      <div class="form-group">
+                        <label for="bio">Description</label>
+                        <textarea class="form-control" id="bio" rows="3" [(ngModel)]="parcour.desciption"  name="first" ></textarea>
+                      </div>
+
+                      <br>
+                      <br>
+                      <div class="container">
+
+                            <div class="submit-form">
+                                  <div *ngIf="!submitted2">
+                                        <div class="row" >
+
+                                             <fieldset style="border: 1px solid #565353; border-radius: 5px; padding: 20px;">
+
+                                                  <legend><mat-icon (click)="toggleDiv2()">subject</mat-icon>
+                                                    Etapes
+                                                  </legend>
+
+
+                                                    <h3>
+                                                      <b><i><mat-icon (click)="toggleDiv()">subject</mat-icon>
+                                                        Etapes</i></b>
+                                                    </h3>
+
+
+
+
+                                                    <div *ngIf="showDiv">
+                                                      <!-- Contenu de la div -->
+                                                      <p>contenu etape.</p>
+                                                      <div *ngFor="let etp of etapes" >
+                                                        <h1>{{etp.libelle}}
+                                                          <div class="btn-group btn-group-sm" style="margin-left: 800px; margin-top:10px;">
+                                                            <button (click)="deleteData(etp.id)"   mat-fab style="background-color:rgb(67, 61, 74)" aria-label="Example icon button with a delete icon">
+                                                              <mat-icon >delete</mat-icon>
+                                                            </button>
+                                                            <button (click)="ModiferEtape(etp)" mat-fab style="background-color:rgb(67, 61, 74)" aria-label="Example icon button with a edit icon">
+                                                              <mat-icon >check</mat-icon>
+                                                            </button>
+
+                                                          </div>
+                                                        </h1>
+
+                                                        <div class="form-group">
+                                                          <label for="nom">Libelle</label>
+                                                          <input type="text" class="form-control" id="nom2" [(ngModel)]="etp.libelle"  name="first" >
+                                                        </div>
+
+
+                                                        <div class="form-group">
+                                                          <label for="bio">Explanation</label>
+                                                          <textarea class="form-control" id="bio2" rows="3" [(ngModel)]="etp.explanation"  name="first" ></textarea>
+                                                        </div>
+///////////////////////ici liste question
+
+<div class="container">
+
+   <div class="submit-form">
+            <div *ngIf="!submitted3">
+                    <div class="row" >
+
+                            <fieldset style="border: 1px solid #565353; border-radius: 5px; padding: 20px;">
+
+                                  <legend><mat-icon (click)="toggleDivs(etp.id)">subject</mat-icon>
+                                    Questions
+                                  </legend>
+
+                                  <div *ngIf="showDivs[etp.id] ">
+                                    <p>contenu etape.</p>
+                                    <div *ngFor="let q of questions" >
+                                      <div class="form-group">
+                                        <label for="nom">Libelle</label>
+                                        <input type="text" class="form-control" id="nom" [(ngModel)]="q.category"  name="first" >
+                                      </div>
+
+
+                                      <div class="form-group">
+                                        <label for="bio">Explanation</label>
+                                        <textarea class="form-control" id="bio2" rows="3" [(ngModel)]="q.description"  name="first" ></textarea>
+                                      </div>
+                                     </div>
+                                    </div>
+
+
+                            </fieldset>
+                    </div>
+            </div>
+  </div>
+</div>
+
+
+
+
+//////fin liste question
+                                                </div>
+                                                <div class="btn-group btn-group-sm" style="margin-left: 110px;">
+                                                  <div>
+                                                    <button (click)="toggleDiv2()" style="background-color:rgb(159, 157, 162); margin-top: 25px; margin-left: 750px"   mat-button ><mat-icon>add</mat-icon>new etaphhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhe</button>
+                                                    <div *ngIf="showDiv2">
+                                                      <!-- Contenu de la div -->
+                                                      <p>Ajout de nouveau etape.</p>
+                                                      <form class="user">
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control form-control"
+                                                              aria-describedby="emailHelp" name="name"
+                                                                placeholder="Name" [(ngModel)]="etape.libelle">
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control form-control-user" name="description"
+                                                                id="exampleInputPeriode" placeholder="Periode" [(ngModel)]="etape.explanation">
+                                                        </div>
+
+
+
+
+                                                        <button  class="btn btn-primary btn-user btn-block" (click)=" AjouterEtape(etape)">
+                                                          <i class="fas fa-check"></i> Save
+                                                        </button>
+                                                        <hr>
+
+                                                      </form>
+
+                                                    </div>
+
+                                                    </div>
+                                                </div>
+                                                    </div>
+
+
+
+
+                                            </fieldset>
+                                        </div>
+                                  </div>
+
+
+
+
+
+                                  <hr>
+                                    <button class="btn btn-primary" (click)="Modiferparcourt()">submit
+                                    </button>
+                                      <div *ngIf="submitted">
+                                        <h4>departement a Modifier avec succées!</h4>
+                                        <button class="btn btn-success" (click)="navigate">Retour</button>
+                                      </div>
+
+                            </div>
+
+                      </div>
+                </fieldset>
+
+            </div>
+        </div>
+</div>
+</div>
+//////////////////////////////
+</div>
+</mat-drawer-content>
+</mat-drawer-container>

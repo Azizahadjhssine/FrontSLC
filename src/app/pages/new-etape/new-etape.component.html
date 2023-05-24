@@ -1,0 +1,51 @@
+
+<div class="container">
+  <div class="card col-md-6 offset-3 mt-2" >
+      <div class="card-header">new Etape</div>
+      <div class="card-body">
+          <form [formGroup]="etapeFormGroup" (ngSubmit)="onSubmit()">
+              <div class="mb-3">
+                  <label class="form-label">Libelle:</label>
+                  <input type="text" formControlName="libelle" class="form-control">
+                  <span class="text-danger" *ngIf="etapeFormGroup.controls['libelle'].touched
+                  && etapeFormGroup.controls['libelle'].errors
+                  && etapeFormGroup.controls['libelle'].errors!['required']">
+
+                  name is required
+              </span>
+
+
+
+              </div>
+              <div class="mb-3">
+                  <label class="form-label">explanation:</label>
+                  <input type="text" formControlName="explanation" class="form-control">
+                  <span class="text-danger" *ngIf="etapeFormGroup.controls['explanation'].touched
+                  && etapeFormGroup.controls['explanation'].errors
+                  && etapeFormGroup.controls['explanation'].errors!['required']">
+
+                  name is required
+              </span>
+              </div>
+
+
+
+              <div class="form-group">
+                  <label>list of parcours</label>
+            <select class="form-select" formControlName="parcoursdto">
+              <option *ngFor="let prc of parcours" [ngValue]="prc
+              ">
+                  {{prc.name}}
+              </option>
+            </select>
+            <br>
+          </div>
+
+              <button [disabled]="!etapeFormGroup.valid" class="btn btn-info" >Save</button>
+          </form>
+
+      </div>
+
+  </div>
+</div>
+

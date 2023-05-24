@@ -1,0 +1,84 @@
+<mat-toolbar color="secondary" class="mat-elevation-z8">
+  <button (click)="drawer.toggle()" mat-icon-button>
+    <mat-icon>menu</mat-icon>
+  </button>
+  <a href="https://www.slc-assurances.fr" target="_blank">
+    <img src="https://www.slc-assurances.fr/image/logo-slc.png" alt="Logo cliquable" style="width: 200px; height: auto;">
+  </a>
+
+  <span class="example-spacer"></span>
+  <button routerLink="" mat-button style="margin-left: 20px;"><mat-icon>home</mat-icon>Home</button>
+  <button mat-button><mat-icon>person</mat-icon>Profile</button>
+  <button routerLink="input" mat-button style="margin-left: 500px;"><mat-icon>search</mat-icon>Search</button>
+</mat-toolbar>
+<mat-drawer-container autosize style="background-color:rgb(227, 221, 235)" >
+  <mat-drawer #drawer opened="true" mode="side" position="start" style="background-color:rgb(184, 184, 188)">
+  <mat-nav-list >
+
+      <mat-list-item>
+          <button (click)="parcours()"  mat-button><mat-icon>edit</mat-icon> Parcours</button>
+      </mat-list-item>
+      <mat-list-item>
+        <button routerLink="/affaire"  mat-button><mat-icon>edit</mat-icon> Affaires</button>
+    </mat-list-item>
+      <mat-list-item>
+          <button routerLink="/souscription" mat-button><mat-icon>edit</mat-icon> Souscription</button>
+      </mat-list-item>
+      <mat-list-item>
+          <button routerLink="/etape" mat-button><mat-icon>edit</mat-icon> Etape</button>
+      </mat-list-item>
+      <mat-list-item>
+          <button routerLink="/question" mat-button><mat-icon>edit</mat-icon> Questions</button>
+      </mat-list-item>
+      <mat-list-item>
+          <button routerLink="/reponse"  mat-button><mat-icon>edit</mat-icon> Reponse</button>
+      </mat-list-item>
+      <mat-list-item>
+        <button mat-button><mat-icon>edit</mat-icon> Assurés</button>
+    </mat-list-item>
+      <mat-list-item>
+          <button routerLink="/conjoint" mat-button><mat-icon>edit</mat-icon> Conjoint</button>
+      </mat-list-item>
+      <mat-list-item>
+        <button  routerLink="/enfant" mat-button><mat-icon>edit</mat-icon> Enfant</button>
+    </mat-list-item>
+
+  </mat-nav-list>
+  </mat-drawer>
+  <mat-drawer-content >
+
+
+
+      <button style="background-color:rgb(159, 157, 162); margin-top: 25px; margin-left: 1000px"   mat-button ><mat-icon>playlist_add</mat-icon>New parcours</button>
+
+    <div style="text-align: center; min-height: 600px;" style="margin-left: 35px; margin-top: 25px;">
+      <div class="row">
+
+
+        <div *ngFor="let prc of parcourss" class="col-md-4">
+
+          <div class="card text-dark  mb-3" style="max-width: 18rem;" style="background-color:rgb(231, 226, 238)" >
+            <div class="card-header font-weight: bold;">Parcours {{prc.id}}
+              <div class="btn-group btn-group-sm" style="margin-left: 110px;">
+                <button (click)="deleteParcours(prc.id)" mat-fab style="background-color:rgb(67, 61, 74)" aria-label="Example icon button with a delete icon">
+                  <mat-icon>delete</mat-icon>
+                </button>
+                <button mat-fab color="primary"  (click)="ModifierParcours(prc.id)"  aria-label="Example icon button with a delete icon" style="margin-left: 20px; background-color:rgb(67, 61, 74);">
+                  <mat-icon>edit</mat-icon>
+                </button>
+              </div>
+
+            </div>
+
+            <div class="card-body ">
+              <h5 class="card-title">{{prc.name}}</h5>
+              <p class="card-text">{{prc.desciption}}</p>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

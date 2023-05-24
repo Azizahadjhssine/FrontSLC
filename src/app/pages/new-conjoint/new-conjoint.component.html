@@ -1,0 +1,140 @@
+<mat-toolbar color="primary" class="mat-elevation-z8">
+  <button (click)="drawer.toggle()" mat-icon-button>
+      <mat-icon>menu</mat-icon>
+  </button>
+  <span>Gestion-SlcParcours</span>
+  <span class="example-spacer"></span>
+  <button routerLink="" mat-button style="margin-left: 20px;"><mat-icon>home</mat-icon>Home</button>
+  <button  mat-button><mat-icon>person</mat-icon>Profile</button>
+
+
+  <button routerLink="input" mat-button style="margin-left: 500px;"><mat-icon>search</mat-icon>search</button>
+
+</mat-toolbar>
+<mat-drawer-container autosize style="background-color:rgb(227, 221, 235)" style="background-image: url('https://i.notrefamille.com/1800x0/smart/2021/08/16/mutuelle-sante-famille.jpg');">
+  <mat-drawer #drawer opened="true" mode="side" position="start" style="background-color:rgb(54, 68, 119)">
+  <mat-nav-list >
+
+      <mat-list-item>
+          <button routerLink="parcours"  mat-button><mat-icon>edit</mat-icon> Parcours</button>
+      </mat-list-item>
+      <mat-list-item>
+          <button routerLink="/souscription" mat-button><mat-icon>edit</mat-icon> Souscription</button>
+      </mat-list-item>
+      <mat-list-item>
+          <button routerLink="/etape" mat-button><mat-icon>edit</mat-icon> Etape</button>
+      </mat-list-item>
+      <mat-list-item>
+          <button routerLink="/question" mat-button><mat-icon>edit</mat-icon> Questions</button>
+      </mat-list-item>
+      <mat-list-item>
+          <button routerLink="/reponse"  mat-button><mat-icon>edit</mat-icon> Reponse</button>
+      </mat-list-item>
+      <mat-list-item>
+        <button mat-button><mat-icon>edit</mat-icon> Assurés</button>
+    </mat-list-item>
+      <mat-list-item>
+          <button routerLink="/conjoint" mat-button><mat-icon>edit</mat-icon> Conjoint</button>
+      </mat-list-item>
+      <mat-list-item>
+        <button  routerLink="/enfant" mat-button><mat-icon>edit</mat-icon> Enfant</button>
+    </mat-list-item>
+
+  </mat-nav-list>
+  </mat-drawer>
+  <mat-drawer-content >
+    <div style="text-align: center;min-height: 600px;" >
+
+<p>new-conjoint works!</p>
+  <!-- Outer Row -->
+  <div class="row justify-content-center">
+
+    <div class="col-xl-6">
+        <br><br><br><br>
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+
+                    <div class="col-lg-12">
+                        <div class="p-5">
+                            <div class="text-center">
+
+                                <h1 class="h1 text-gray-900 mb-4">Ajout Conjoint</h1>
+                            </div>
+
+
+
+                            <div class="alert alert-danger" *ngIf="errormessage">
+                                {{errormessage}}
+                            </div>
+                            <form class="user">
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control"
+                                      aria-describedby="emailHelp" name="name"
+                                        placeholder="firstname" [(ngModel)]="conjoint.firstname">
+                                </div>
+
+                                <br>
+
+                                <div class="form-group">
+                                  <input type="text" class="form-control form-control-user" name="lastname"
+                                      id="exampleInputPeriod" placeholder="lastname" [(ngModel)]="conjoint.lastname">
+                              </div>
+<br>
+
+                                  <div class="form-group">
+                                    <input type="text" class="form-control form-control-user" name="civilite"
+                                        id="exampleInputPerio" placeholder="Periciviliteode" [(ngModel)]="conjoint.civilite">
+                                </div>
+                                <br>
+
+                                <div class="form-group">
+                                  <input type="text" class="form-control form-control-user" name="dateNaissance"
+                                      id="exampleIutPeriode" placeholder="PedateNaissanceriode" [(ngModel)]="conjoint.dateNaissance">
+                                </div>
+                                <br>
+
+
+                                <div class="form-group">
+                                  <input type="text" class="form-control form-control-user" name="regimeConj"
+                                      id="exampleInputeriode" placeholder="regime Conj" [(ngModel)]="conjoint.regimeConj">
+                                </div>
+                                <br>
+
+                                <div class="form-group">
+                                  <input type="text" class="form-control form-control-user" name="etatCivil"
+                                      id="exampleutPeriode" placeholder="etatCivil" [(ngModel)]="conjoint.etatCivil">
+                                </div>
+                                <br>
+
+                                <div class="form-group">
+                                  <input type="text" class="form-control form-control-user" name="email"
+                                      id="exampleInputPeriode" placeholder="email" [(ngModel)]="conjoint.email">
+                                </div>
+                                <br>
+
+
+                                <button  class="btn btn-primary btn-user btn-block" (click)=" AjouterConjoint(conjoint)">
+                                  <i class="fas fa-check"></i> Save
+                                </button>
+                                <hr>
+
+                            </form>
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+</div>
+</mat-drawer-content>
+</mat-drawer-container>

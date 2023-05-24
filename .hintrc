@@ -1,0 +1,24 @@
+{
+  "extends": [
+    "development"
+  ],
+  "hints": {
+    "axe/forms": [
+      "default",
+      {
+        "select-name": "off",
+        "label": "off"
+      }
+    ],
+    "axe/aria": [
+      "default",
+      {
+        "aria-allowed-attr": "off"
+      }
+    ],
+    "button-type": "off",
+    "no-inline-styles": "off",
+    "meta-viewport": "off",
+    "disown-opener": "off"
+  }
+}

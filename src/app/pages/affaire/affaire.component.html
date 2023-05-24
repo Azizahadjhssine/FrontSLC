@@ -1,0 +1,109 @@
+<p>affaire works!</p>
+<mat-toolbar color="primary" class="mat-elevation-z8">
+  <button (click)="drawer.toggle()" mat-icon-button>
+      <mat-icon>menu</mat-icon>
+  </button>
+  <span>Gestion-SlcParcours</span>
+  <span class="example-spacer"></span>
+  <button routerLink="/homeAdmin" mat-button style="margin-left: 20px;"><mat-icon>home</mat-icon>Home</button>
+  <button  mat-button><mat-icon>person</mat-icon>Profile</button>
+
+
+  <button routerLink="input" mat-button style="margin-left: 500px;"><mat-icon>search</mat-icon>search</button>
+
+</mat-toolbar>
+<mat-drawer-container autosize style="background-color:rgb(227, 221, 235)" >
+  <mat-drawer #drawer opened="true" mode="side" position="start" style="background-color:rgb(54, 68, 119)">
+  <mat-nav-list >
+
+      <mat-list-item>
+          <button routerLink="/parcours"   mat-button><mat-icon>edit</mat-icon> Parcours</button>
+      </mat-list-item>
+      <mat-list-item>
+        <button routerLink="/souscription" mat-button><mat-icon>edit</mat-icon> Affaires</button>
+    </mat-list-item>
+      <mat-list-item>
+          <button routerLink="/souscription" mat-button><mat-icon>edit</mat-icon> Souscription</button>
+      </mat-list-item>
+      <mat-list-item>
+          <button routerLink="/etape" mat-button><mat-icon>edit</mat-icon> Etape</button>
+      </mat-list-item>
+      <mat-list-item>
+          <button routerLink="/question" mat-button><mat-icon>edit</mat-icon> Questions</button>
+      </mat-list-item>
+      <mat-list-item>
+          <button routerLink="/reponse"  mat-button><mat-icon>edit</mat-icon> Reponse</button>
+      </mat-list-item>
+      <mat-list-item>
+        <button mat-button><mat-icon>edit</mat-icon> Assurés</button>
+    </mat-list-item>
+      <mat-list-item>
+          <button routerLink="/conjoint" mat-button><mat-icon>edit</mat-icon> Conjoint</button>
+      </mat-list-item>
+      <mat-list-item>
+        <button  routerLink="/enfant" mat-button><mat-icon>edit</mat-icon> Enfant</button>
+    </mat-list-item>
+
+  </mat-nav-list>
+  </mat-drawer>
+  <mat-drawer-content >
+      <div style="text-align: center;min-height: 600px;" >
+<div class="container" id="main-container">
+<br>
+
+    <a  class="btn btn-secondary" style="margin-left: 600px;"><mat-icon>add</mat-icon> New</a>
+
+<br><br><br>
+       <table class="table table-striped" style="background-color:rgb(238, 234, 239)">
+          <thead>
+            <tr>
+              <th scope="col">id</th>
+              <th scope="col">idaff</th>
+
+
+              <th scope="col">statut</th>
+              <th scope="col">Origine</th>
+              <th scope="col">dateEffet</th>
+              <th scope="col">dateSignature</th>
+              <th scope="col">Assure</th>
+              <th scope="col">Conjoint</th>
+              <th scope="col">Enfants</th>
+              <th scope="col">Action</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let aff of affaires" class="col-md-6 col-xl-5">
+              <td>{{aff.id}}</td>
+
+              <td>{{aff.idaff}}</td>
+              <td>{{aff.statut}}</td>
+              <td>{{aff.origine}}</td>
+              <td>{{aff.dateEffet}}</td>
+              <td>{{aff.dateSignature}}</td>
+              <td>{{aff.assureDto}}</td>
+              <td>{{aff.conjointDto.lastname}} {{aff.conjointDto.firstname}}</td>
+              <td>{{aff.enfants}}</td>
+              <td >
+
+                <div class="btn-group btn-group-sm">
+                  <button mat-fab color="primary" aria-label="Example icon button with a delete icon">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                  <button mat-fab color="primary" aria-label="Example icon button with a delete icon" style="margin-left: 20px;">
+                    <mat-icon>edit</mat-icon>
+                  </button>
+                </div>
+              </td>
+
+
+            </tr></tbody></table>
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+            showFirstLastButtons
+            aria-label="Select page of periodic elements">
+            </mat-paginator></div>
+
+
+          </div>
+        </mat-drawer-content>
+      </mat-drawer-container>
