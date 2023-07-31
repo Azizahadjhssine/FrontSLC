@@ -14,4 +14,15 @@ export class AffaireService {
   listAffaires():Observable<Affaire[]>{
     return this.http.get<Affaire[]>(`${this.localUrl}/listerAffaire`)
   }
+
+  listAffairesByAssure(id:number):Observable<Affaire[]>{
+    return this.http.get<Affaire[]>(`${this.localUrl}/AffaireByAssure/${id}`)
+
+  }
+
+  affaireById(id:number):Observable<Affaire>{
+    return this.http.get<Affaire>(`${this.localUrl}/findOne/${id}`)
+
+  }
+
 }

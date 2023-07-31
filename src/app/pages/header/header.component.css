@@ -1,0 +1,89 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: Inter;
+  font-size: 16px;
+}
+
+header {
+  z-index: 100;
+  position: fixed;
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  background-color: #fff;
+  ;
+}
+
+.header-img {
+  height: 60%;
+  width: 100px;
+  margin: 20px;
+}
+
+.header-divider {
+  width: 1px;
+  height: 60%;
+
+  background: #8b8a8ae5;
+  margin: 0 10px;
+}
+
+
+
+
+
+.header-btn {
+  height: 60%;
+  width: 100px;
+  margin: 20px
+}
+
+.text {
+  font-size: 16;
+  color: gray;
+  margin: 20px 0;
+  font-family: inter;
+}
+
+.text-blod {
+  font-size: 12px;
+  font-weight: 600;
+  color: gray;
+  margin-bottom: 5px;
+  font-family: Inter;
+}
+
+.button-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px;
+}
+
+.top-left-button {
+  /* Add styles for the button */
+  display: flex;
+  align-items: center;
+  background-color: #FFA437;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-right: 5px;
+}
+
+.button-text {
+  /* Add spacing between icon and text */
+  margin-left: 5px;
+}

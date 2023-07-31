@@ -24,14 +24,15 @@ export class DetailsParcoursComponent implements OnInit{
   iddep:any;
   //departement!:Departement;
   parcour:Parcours= new Parcours();
+   question: Question=new Question();
+
   showDiv: boolean = false;
   showDiv2: boolean = false;
   showDiv3: boolean = false;
 
   etapes!: Etape[];
   questions!: Question[];
-  responses!: Reponse[];
-
+  reponse!: Reponse;
   etape : Etape = new Etape()
 
   errormessage !: string;
@@ -73,9 +74,7 @@ export class DetailsParcoursComponent implements OnInit{
           cancelButtonText: 'Non, gardez-le'
         }).then((result: any) => {
           if (result.value) {
-            // alert(id);
             this.etapeService.deleteEtape(id).subscribe(res => {
-            //  this.reloadData()
 
             })
             Swal.fire(
@@ -88,6 +87,32 @@ export class DetailsParcoursComponent implements OnInit{
         })
       }
     }
+
+    deleteQuestion(id :number){
+      if (id != undefined && id != null) {
+        Swal.fire({
+          title: 'Êtes-vous sûr?',
+          text: 'Vous ne pourrez pas récupérer ce etape!',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'Oui, supprimez-le!',
+          cancelButtonText: 'Non, gardez-le'
+        }).then((result: any) => {
+          if (result.value) {
+            this.questionService.deleteQuestion(id).subscribe(res => {
+
+            })
+            Swal.fire(
+              'Supprimé!',
+              'Votre question a été supprimé.',
+              'success'
+            )
+          }
+
+        })
+      }
+    }
+
     reloadData() {
       this.etapeService.listEtape().subscribe({
         next: (data) => {
@@ -135,13 +160,12 @@ findQuestion(id:any){
 findReponse(id:any){
   this.reponseService.findReponsenByQuestion(id).subscribe(
     {
-      {
-        next:data=>{this.reponses=data
-          console.log('questions', this.reponses)
+      next:data=>{this.reponse=data
+        console.log(id)
 
-          }
-          } )
+      }
 
+  })
   }
 
 
@@ -166,22 +190,36 @@ findReponse(id:any){
 
 
 
-      ModiferEtape(etp:Etape): void {
-        if (!this.submitted)
-          {
 
-            this.etapeService.ajouteretape(etp)
-              .subscribe({
-                next: (res) => {
-                console.log(res);
-                  this.submitted = true;
-                  this.router.navigateByUrl("")
-                },
-              // error: (e) => console.error(e)
-              });
-          }
+
+      ModifierQuestion(quest:Question){
+        if(!this.submitted)
+        {
+          this.questionService.ajouterQuestion(quest)
+          .subscribe({
+            next: (res)=>{
+            console.log(res);
+            this.submitted =true;
+            },
+
+          });
+        }
       }
 
+
+      ModifierReponse(rep:Reponse){
+        if(!this.submitted)
+        {
+          this.reponseService.ajouterReponse(rep)
+          .subscribe({
+            next: (res)=>{
+            console.log(res);
+            this.submitted =true;
+            },
+
+          });
+        }
+      }
   toggleDiv() {
     this.showDiv = !this.showDiv;
   }
@@ -202,6 +240,15 @@ findReponse(id:any){
 
   }
 
+
+  showDivsReponse: { [questionId: number]: boolean } = {};
+  toggleDivsRep(id: number) {
+    this.showDivsReponse[id] = !this.showDivsReponse[id];
+    this.findReponse(id);
+
+  }
+
+
   AjouterEtape(parcours: Etape){
     const prc={
       id:parcours.id,
@@ -217,7 +264,40 @@ findReponse(id:any){
     })
   }
 
+  ModiferEtape(etp:Etape): void {
+    if (!this.submitted)
+      {
 
+        this.etapeService.ajouteretape(etp)
+          .subscribe({
+            next: (res) => {
+            console.log(res);
+              this.submitted = true;
+              this.router.navigateByUrl("")
+            },
+          // error: (e) => console.error(e)
+          });
+      }
+  }
+
+AjouterQuestion(Question: Question, etapeDto: Etape){
+  const qst={
+    id: Question.id,
+    value:Question.value,
+    description: Question.description,
+    etapeDto: etapeDto,
+    category: Question.category
+  }
+  console.log(Question)
+  console.log(etapeDto)
+
+  this.questionService.ajouterQuestion(qst).subscribe({
+      next : data=>{alert("question saved");},
+      error:err=>{this.errormessage = err.error.message}
+
+  })
+
+}
   toggleContent(idEtape: any,id:number) {
 
     this.showContent = !this.showContent;

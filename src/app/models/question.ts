@@ -2,9 +2,10 @@ import { Etape } from "./etape";
 
 export class Question {
   id!:number;
-	category!: String ;
-	description!: String ;
-	value!: String ;
+	category!: string ;
+	description!: string ;
+	value!: string ;
+
   etapeDto!: Etape
 
 

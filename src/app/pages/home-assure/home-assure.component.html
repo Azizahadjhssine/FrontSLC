@@ -2,7 +2,7 @@
   <button (click)="drawer.toggle()" mat-icon-button>
       <mat-icon>menu</mat-icon>
   </button>
-  <span>{{fullname}}</span>
+  <span>{{fullname}}{{idA}}</span>
   <span class="example-spacer"></span>
   <button routerLink="" mat-button style="margin-left: 50px;"><mat-icon>notifications_active</mat-icon></button>
 
@@ -17,9 +17,11 @@
 <mat-drawer-container autosize style="background-color:rgb(227, 221, 235)" >
   <mat-drawer #drawer opened="true" mode="side" position="start" style="background-color:rgb(2, 4, 12)">
   <mat-nav-list >
-
+    <button (click)="getAssure(idA)"   mat-fab style="background-color:rgb(67, 61, 74)" aria-label="Example icon button with a delete icon">
+      <mat-icon >delete</mat-icon>
+    </button>
       <mat-list-item>
-          <button routerLink="/homeAssure"   mat-button style="color: rgb(225, 215, 215);"><mat-icon>home</mat-icon> Home</button>
+          <button routerLink="/homeAssure"   mat-button style="color: rgb(225, 215, 215);"><mat-icon>home</mat-icon> Souscriptions</button>
       </mat-list-item>
       <mat-list-item>
         <button routerLink="/Profile" mat-button style="color: rgb(225, 215, 215);"><mat-icon>person</mat-icon> Profile</button>
@@ -63,3 +65,4 @@
       </div>
     </mat-drawer-content>
   </mat-drawer-container>
+

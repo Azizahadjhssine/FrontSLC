@@ -1,0 +1,28 @@
+<app-header></app-header>
+<div id="progress" class="progress"></div>
+
+<div class="container" style="text-align: center">
+  <div class="button-container">
+    <button title="tpp4"class="back-btn" (click)="navigateToPreviousStep()">
+      <fa-icon [icon]="icon" class="icon" style="color: #b5b4b4;"></fa-icon>
+    </button>
+    <small class="back-text">Président</small>
+  </div>
+  <h1 class="heading-primary">
+    Je renseigne
+    <span class="heading-primary-blue">mon adresse email</span>
+  </h1>
+
+  <div class="wrapper wrapper-col">
+    <div>
+      <img src="../../../assets/images/email.svg" class="img-map" alt="an image" />
+    </div>
+
+    <div class="location-input-icons">
+      <fa-icon [icon]="iconMail" style="color: #B1D263;" class="location-icon"></fa-icon>
+      <input class="location-input-field" type="text" [(ngModel)]="emailSouscription" (change)="onEmailSelected()"/>
+    </div>
+  </div>
+
+  <input type="submit" value="je continue" class="button-primary"  *ngIf="isDataSelected" (click)="AjoutSouscription()">
+</div>

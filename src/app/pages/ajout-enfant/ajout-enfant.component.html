@@ -1,0 +1,50 @@
+<app-header></app-header>
+<div id="progress" class="progress"></div>
+
+<div class="container" style="text-align: center">
+  <div class="button-container">
+    <button title="epenf" class="back-btn" (click)="navigateToPreviousStep()">
+      <fa-icon [icon]="icon" class="icon" style="color: #b5b4b4;"></fa-icon>
+    </button>
+    <small class="back-text">Président</small>
+  </div>
+  <h1 class="heading-primary">
+    Et
+    <span class="heading-primary-gren">sur vos enfants</span>
+  </h1>
+
+  <div class="wrapper wrapper-col">
+    <div>
+      <h2 class="heading-primary">Combien d’enfants avez-vous ?</h2>
+      <div class="children-count">
+        <button (click)="decrementCounter()">-</button>
+        <input class="form-group-input" type="text" value={{counter}} id="counter" />
+        <button (click)="incrementCounter()">+</button>
+      </div>
+    </div>
+
+    <h2 class="heading-primary">
+      Quelle est sa date de naissance et son régime assuré ?
+    </h2>
+
+    <div id="enfantInfo" *ngFor="let input of inputs">
+      <div class="parent">
+        <div class="div1">
+          <div class="form-group" style="width: 100%">
+            <input class="date-input form-group-input" type="date" name="" id="" style="font-size: inherit !important; text-transform: uppercase;" [(ngModel)]="NaissanceEnfant"/>
+          </div>
+        </div>
+        <div class="div2">
+          <select class="form-group-input drop-down" name="cars" id="cars">
+            <option value="Sécurité Sociale">Sécurité Sociale</option>
+            <option value="Travailleur non salarié">Travailleur non salarié </option>
+            <option value="Régime Agricole">Régime Agricole</option>
+            <option value="Alsace / Moselle">Alsace / Moselle</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+  <input type="submit" (click)="ModifierSouscription()" value="je continue" class="button-primary">
+
+</div>

@@ -1,0 +1,28 @@
+<app-header></app-header>
+<div id="progress" class="progress"></div>
+<form #dateform="ngForm">
+  <div class="container" style="text-align: center">
+    <div>
+    <div class="button-container">
+      <button title="etpp" class="back-btn" routerLink="/etape1">
+        <fa-icon [icon]="icon" class="icon" style="color: #b5b4b4;"></fa-icon>
+      </button>
+    </div>
+    <small class="back-text">Président</small>
+    </div>
+
+    <h1 class="heading-primary">
+      Je souhaite que ma couverture
+      <span class="heading-primary-green">débute le</span>
+    </h1>
+    <div class="wrapper">
+      <div>
+        <img src="../../../assets/images/calendrier.svg" alt="an image" class="img-calendrier" />
+        <h4 class="heading-secondary-green">Date de début de contrat :</h4>
+        <input class="date-input" type="date" name="selectdate" [min]="minDate.toISOString().split('T')[0]" [(ngModel)]="selectdate"
+        (change)="onDateSelected()"/>
+      </div>
+    </div>
+    <input type="submit" value="Je Continue" class="button-primary" *ngIf="isDateSelected" (click)="ModifierSouscription()">
+  </div>
+</form>

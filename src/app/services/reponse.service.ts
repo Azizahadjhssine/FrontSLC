@@ -16,7 +16,7 @@ export class ReponseService {
   constructor(private http:HttpClient) {}
 
 
-  ajoutersous(sous:Reponse ):Observable<Reponse> {
+  ajouterReponse(sous:Reponse ):Observable<Reponse> {
     return this.http.post<Reponse>(`${this.localUrl}/save`, sous)
 
   }
@@ -25,6 +25,6 @@ export class ReponseService {
         return this.http.get<Reponse[]>(`${this.localUrl}/lister`)
   }
   findReponsenByQuestion(id: number): Observable<Reponse> {
-    return this.http.get<Reponse>(`${this.localUrl}/findbyidetape/${id}`)
+    return this.http.get<Reponse>(`${this.localUrl}/findbyidQuestion/${id}`)
   }
 }

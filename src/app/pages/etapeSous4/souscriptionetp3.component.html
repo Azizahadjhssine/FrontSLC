@@ -1,0 +1,44 @@
+<app-header></app-header>
+<div id="progress" class="progress"></div>
+
+<div class="container" style="text-align: center">
+  <div>
+    <div class="button-container">
+      <button title="etp3"class="back-btn" routerLink="/etape2">
+        <fa-icon [icon]="icon" class="icon" style="color: #b5b4b4;"></fa-icon>
+      </button>
+    </div>
+    <small class="back-text">Président</small>
+    </div>
+
+
+  <h1 class="heading-primary">
+    Dites-nous en
+    <span class="heading-primary-green">un peu plus sur vous</span>
+  </h1>
+
+  <div class="wrapper wrapper-col">
+    <div>
+      <h2 class="heading-secondary-green">Votre date de naissance :</h2>
+      <input class="date-input" type="date" name="dateNaissanceuser" [(ngModel)]="dateNaissanceuser" id=""  [max]="getMaxDate()"
+      />
+    </div>
+
+    <h2 class="heading-secondary-green">Votre régime assuré :</h2>
+    <div class="regime-block" style="width: 400px">
+      <div class="regime-block-1">
+        <button class="button-secondary" (click)="getRegime('Sécurité Sociale')">Sécurité Sociale</button>
+      </div>
+      <div class="regime-block-2">
+        <button class="button-secondary" (click)="getRegime('Travailleur non salarié')">Travailleur non salarié</button>
+      </div>
+      <div class="regime-block-3">
+        <button class="button-secondary" (click)="getRegime('Régime Agricole')">Régime Agricole</button>
+      </div>
+      <div class="regime-block-4">
+        <button class="button-secondary" (click)="getRegime('Alsace / Moselle')">Alsace / Moselle</button>
+      </div>
+    </div>
+  </div>
+  <input type="submit" *ngIf="valid()" (click)="ModifierSouscription()" value="je continue" class="button-primary">
+</div>

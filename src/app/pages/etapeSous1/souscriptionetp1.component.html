@@ -1,0 +1,76 @@
+<app-header></app-header>
+<div id="progress" class="progress"></div>
+<div class="container" style="text-align: center">
+  <h1 class="heading-primary">
+    <span class="heading-primary-green">Qui</span>
+    souhaitez-vous assurer ?
+  </h1>
+  <div class="wrapper wrapper-row">
+    <div style="text-align: center; width: 200px">
+      <img *ngIf="isChecked1==false; else buttonCheked1" src="../../../assets/images/moiOpacité.svg" alt="an image"
+        id="image1" />
+      <p class="text" [style.color]="isChecked1 ? 'green' : 'gray'">Moi</p>
+      <div style="display: inline-block; position: relative">
+        <label class="box">
+          <input class="form-check-input" type="checkbox" value="" [(ngModel)]="isChecked1"
+            (ngModelChange)="onToggleChange('moi')" />
+          <span class="mark" onclick=""></span>
+        </label>
+        <ng-template #buttonCheked1>
+          <img *ngIf="isChecked1==true" src="../../../assets/images/moi .svg" alt="an image" id="image2">
+        </ng-template>
+      </div>
+
+    </div>
+    <div style="text-align: center; width: 200px">
+      <img *ngIf="isChecked2==false; else buttonCheked2" src="../../../assets/images/mon_conjoint-et-moiOpacite.svg" alt="an image" />
+      <p class="text" [style.color]="isChecked2 ? 'green' : 'gray'">Mon conjoint et moi</p>
+      <div style="display: inline-block; position: relative">
+        <label class="box">
+          <input class="form-check-input" type="checkbox" value="" [(ngModel)]="isChecked2"
+            (ngModelChange)="onToggleChange('conjoint')" />
+          <span class="mark" onclick=""></span>
+        </label>
+        <ng-template #buttonCheked2>
+          <img *ngIf="isChecked2==true" src="../../../assets/images/mon_conjoint-et-moi.svg" alt="an image" id="image2">
+        </ng-template>
+      </div>
+    </div>
+
+    <div style="text-align: center; width: 200px">
+      <img *ngIf="isChecked3==false; else buttonCheked3" src="../../../assets/images/mes-enfants-et-moiOpacite.svg" alt="an image" />
+      <p class="text"  [style.color]="isChecked3 ? 'green' : 'gray'" >Mes enfants et moi</p>
+      <div style="display: inline-block; position: relative">
+        <label class="box">
+          <input class="form-check-input" type="checkbox" value="" [(ngModel)]="isChecked3"
+            (ngModelChange)="onToggleChange('moiEnfant')" />
+          <span class="mark" onclick=""></span>
+        </label>
+        <ng-template #buttonCheked3>
+          <img *ngIf="isChecked3==true" src="../../../assets/images/mes-enfants-et-moi.svg" alt="an image"
+            id="image2">
+        </ng-template>
+      </div>
+    </div>
+
+    <div style="text-align: center; width: 200px">
+      <img *ngIf="isChecked4==false; else buttonCheked4" src="../../../assets/images/familleOpacité.svg"
+        alt="an image" />
+      <p class="text" [style.color]="isChecked4 ? 'green' : 'gray'" >conjoint, enfants et moi</p>
+      <div style="display: inline-block; position: relative">
+        <label class="box">
+          <input class="form-check-input" type="checkbox" value="" [(ngModel)]="isChecked4"
+            (ngModelChange)="onToggleChange('conjointMoiEnfant')" />
+          <span class="mark" onclick=""></span>
+        </label>
+        <ng-template #buttonCheked4>
+          <img *ngIf="isChecked4==true" src="../../../assets/images/famille.svg" alt="an image"
+            id="image2">
+        </ng-template>
+      </div>
+    </div>
+  </div>
+
+  <input type="submit"  value="Je Continue" id="next" class="button-primary" *ngIf="option1" (click)="navigateToNextPage()" >
+
+</div>

@@ -7,7 +7,7 @@
   </a>
 
   <span class="example-spacer"></span>
-  <button routerLink="" mat-button style="margin-left: 20px;"><mat-icon>home</mat-icon>Home</button>
+  <button routerLink="" mat-button style="margin-left: 20px;"><mat-icon>home</mat-icon>Mes Souscriptions</button>
   <button mat-button><mat-icon>person</mat-icon>Profile</button>
   <button routerLink="input" mat-button style="margin-left: 500px;"><mat-icon>search</mat-icon>Search</button>
 </mat-toolbar>
@@ -139,28 +139,142 @@
                                   <legend><mat-icon (click)="toggleDivs(etp.id)">subject</mat-icon>
                                     Questions
                                   </legend>
+                                 <!--
+                                     <h1>{{etp.libelle}}
+                                                          <div class="btn-group btn-group-sm" style="margin-left: 800px; margin-top:10px;">
+                                                            <button (click)="deleteData(etp.id)"   mat-fab style="background-color:rgb(67, 61, 74)" aria-label="Example icon button with a delete icon">
+                                                              <mat-icon >delete</mat-icon>
+                                                            </button>
+                                                            <button (click)="ModiferEtape(etp)" mat-fab style="background-color:rgb(67, 61, 74)" aria-label="Example icon button with a edit icon">
+                                                              <mat-icon >check</mat-icon>
+                                                            </button>
 
+                                                          </div>
+                                                        </h1>
+                                 -->
                                   <div *ngIf="showDivs[etp.id] ">
                                     <p>contenu etape.</p>
+
                                     <div *ngFor="let q of questions" >
+                                      <h1>{{q.category}}
+                                        <div class="btn-group btn-group-sm" style="margin-left: 800px; margin-top:10px;">
+                                          <button (click)="deleteQuestion(q.id)"   mat-fab style="background-color:rgb(67, 61, 74)" aria-label="Example icon button with a delete icon">
+                                            <mat-icon >delete</mat-icon>
+                                          </button>
+                                          <button (click)="ModifierQuestion(q)" mat-fab style="background-color:rgb(67, 61, 74)" aria-label="Example icon button with a edit icon">
+                                            <mat-icon >check</mat-icon>
+                                          </button>
+
+                                        </div>
+                                      </h1>
+
                                       <div class="form-group">
-                                        <label for="nom">Libelle</label>
-                                        <input type="text" class="form-control" id="nom" [(ngModel)]="q.category"  name="first" >
+                                        <label for="nom">Category</label>
+                                        <input type="text" class="form-control" id="nom5" [(ngModel)]="q.category"  name="first" >
                                       </div>
 
 
                                       <div class="form-group">
-                                        <label for="bio">Explanation</label>
+                                        <label for="bio">Value</label>
+                                        <textarea class="form-control" id="bio2" rows="3" [(ngModel)]="q.value"  name="first" ></textarea>
+                                      </div>
+
+
+                                      <div class="form-group">
+                                        <label for="bio">Description</label>
                                         <textarea class="form-control" id="bio2" rows="3" [(ngModel)]="q.description"  name="first" ></textarea>
                                       </div>
+
+
+//ici reponse
+<fieldset style="border: 1px solid #565353; border-radius: 5px; padding: 20px;">
+
+<legend><mat-icon (click)="toggleDivsRep(q.id)">subject</mat-icon>
+  Reponse
+</legend>
+<div *ngIf="showDivsReponse[q.id] ">
+  <p>contenu question.</p>
+
+    <h1>reponssss
+      <div class="btn-group btn-group-sm" style="margin-left: 800px; margin-top:10px;">
+        <button (click)="deleteQuestion(reponse.id)"   mat-fab style="background-color:rgb(67, 61, 74)" aria-label="Example icon button with a delete icon">
+          <mat-icon >delete</mat-icon>
+        </button>
+        <button (click)="ModifierReponse(reponse)" mat-fab style="background-color:rgb(67, 61, 74)" aria-label="Example icon button with a edit icon">
+          <mat-icon >check</mat-icon>
+        </button>
+
+      </div>
+    </h1>
+
+    <div class="form-group">
+      <label for="nom">Type reponse</label>
+      <input type="text" class="form-control" id="nom" [(ngModel)]="reponse.type"  name="first" >
+    </div>
+
+
+
+
+
+    <div class="form-group">
+      <label for="bio">idchamp</label>
+      <textarea class="form-control" id="bio2" rows="3" [(ngModel)]="reponse.id_champ"  name="first" ></textarea>
+    </div>
+  </div>
+</fieldset>
+//fin reponse
+
+
+
                                      </div>
                                     </div>
 
+
+///
+<div class="btn-group btn-group-sm" style="margin-left: 110px;">
+  <div>
+    <button (click)="toggleDiv2()" style="background-color:rgb(159, 157, 162); margin-top: 25px; margin-left: 750px"   mat-button ><mat-icon>add</mat-icon>new question</button>
+    <div *ngIf="showDiv2">
+      <!-- Contenu de la div -->
+      <p>Ajout de nouveau question.</p>
+      <form class="user">
+        <div class="form-group">
+            <input type="text" class="form-control form-control"
+              aria-describedby="emailHelp" name="name"
+                placeholder="Name" [(ngModel)]="question.value">
+        </div>
+
+        <div class="form-group">
+            <input type="text" class="form-control form-control-user" name="description"
+                id="exampleInputPeriode" placeholder="Periode" [(ngModel)]="question.description">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control form-control-user" name="description"
+              id="exampleInputPeriode" placeholder="Periode" [(ngModel)]="question.category">
+      </div>
+
+
+
+        <button  class="btn btn-primary btn-user btn-block" (click)=" AjouterQuestion(question,etp)">
+          <i class="fas fa-check"></i> Save
+        </button>
+        <hr>
+
+      </form>
+
+    </div>
+
+    </div>
+</div>
+///
 
                             </fieldset>
                     </div>
             </div>
   </div>
+  //
+
+  //
 </div>
 
 
@@ -170,7 +284,7 @@
                                                 </div>
                                                 <div class="btn-group btn-group-sm" style="margin-left: 110px;">
                                                   <div>
-                                                    <button (click)="toggleDiv2()" style="background-color:rgb(159, 157, 162); margin-top: 25px; margin-left: 750px"   mat-button ><mat-icon>add</mat-icon>new etaphhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhe</button>
+                                                    <button (click)="toggleDiv2()" style="background-color:rgb(159, 157, 162); margin-top: 25px; margin-left: 750px"   mat-button ><mat-icon>add</mat-icon>new etape</button>
                                                     <div *ngIf="showDiv2">
                                                       <!-- Contenu de la div -->
                                                       <p>Ajout de nouveau etape.</p>

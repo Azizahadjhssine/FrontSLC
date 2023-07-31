@@ -23,5 +23,7 @@ export class QuestionService {
 findQuestionByEtape(id: number): Observable<Question[]> {
   return this.http.get<Question[]>(`${this.localUrl}/findbyidetape/${id}`)
 }
-
+deleteQuestion(id:number):Observable<Question> {
+  return this.http.delete<Question>(`${this.localUrl}/delete/${id}`)
+}
 }

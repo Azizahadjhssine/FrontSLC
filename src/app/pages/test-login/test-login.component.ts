@@ -29,7 +29,7 @@ export class TestLoginComponent implements OnInit{
           console.log(fullname)
           //console.log(ress.token)
           console.log(ress)
-          this.router.navigate(["/homeAssure"])
+          this.router.navigate(["/profileHomeAssure"])
          console.log("bonjur")
 
         }}

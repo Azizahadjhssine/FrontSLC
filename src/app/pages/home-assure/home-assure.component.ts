@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Assure } from 'src/app/models/assure';
+import { AssureService } from 'src/app/services/assure.service';
 
 @Component({
   selector: 'app-home-assure',
@@ -8,13 +10,18 @@ import { Router } from '@angular/router';
 })
 export class HomeAssureComponent implements OnInit{
 fullname:any
-id:any
-constructor(private router:Router){}
+idA:any
+assure!: Assure;
+
+constructor(private router:Router, private assureService : AssureService){}
   ngOnInit(): void {
     this.fullname =localStorage.getItem('fullname')
-    this.id= localStorage.getItem('userId')
+    this.idA= localStorage.getItem('userId')
 
   console.log(this.fullname)
+  console.log(this.idA)
+
+  this.getAssure(this.idA)
 
 }
 
@@ -27,4 +34,14 @@ logout(){
 
 }
 
+
+getAssure(id : any){
+  this.assureService.findById(id).subscribe(
+    {
+      next:data=>{this.assure=data
+        console.log('assure', this.assure)
+
+        }
+        } )
+}
 }

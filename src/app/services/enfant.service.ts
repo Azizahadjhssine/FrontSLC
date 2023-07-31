@@ -27,4 +27,9 @@ return this.http.get<Enfant[]>(`${this.localUrl}/listEnfant`)
    delete(id:number):Observable<Enfant>{
      return this.http.delete<Enfant>(`${this.localUrl}/delet/${id}`)
    }
+
+   findEnfantByAffaire(id:any):Observable<Enfant[]>{
+    return this.http.get<Enfant[]>(`${this.localUrl}/listEnfant`)
+
+   }
   }

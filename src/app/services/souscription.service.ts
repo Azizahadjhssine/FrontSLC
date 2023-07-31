@@ -24,5 +24,12 @@ export class SouscriptionService {
   deleteSouscription(id:number):Observable<Souscription> {
     return this.http.delete<Souscription>(`${this.localUrl}/delete/${id}`)
 }
-  
+
+updateSouscription(souscription:Souscription):Observable<Souscription>{
+  return this.http.post<Souscription>('${this.localUrl}/save/',souscription)
+}
+findSouscription(id: number): Observable<Souscription> {
+  return this.http.get<Souscription>(`${this.localUrl}/findbyid/${id}`)
+}
+
 }

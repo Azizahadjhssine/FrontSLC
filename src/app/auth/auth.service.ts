@@ -39,6 +39,10 @@ return false;
       localStorage.setItem("fullname", fullname);
       const userId = decodedToken.userId;
       localStorage.setItem("userId", userId);
+
+
+      const password = decodedToken.password;
+      localStorage.setItem("password", password);
       console.log(decodedToken)
         }
 
@@ -46,7 +50,7 @@ return false;
 
   }
 
- 
+
   }
 
 

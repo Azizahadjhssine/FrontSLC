@@ -1,0 +1,190 @@
+<mat-toolbar color="secondary" class="mat-elevation-z8">
+  <button  mat-icon-button>
+    <mat-icon>menu</mat-icon>
+  </button>
+  <a href="https://www.slc-assurances.fr" target="_blank">
+    <img src="https://www.slc-assurances.fr/image/logo-slc.png" alt="Logo cliquable" style="width: 200px; height: auto;">
+  </a>
+
+  <span class="example-spacer"></span>
+  <button routerLink="/affaireByAssure/idA" mat-button style="margin-left: 200px;">Mes souscriptions</button>
+
+
+
+        <div class="media align-items-center" style="margin-left: 750px;">
+          <span class="avatar avatar-sm rounded-circle">
+            <img alt="Image placeholder" src="https://demos.creative-tim.com/argon-dashboard/assets-old/img/theme/team-4.jpg">
+          </span>
+          <div class="media-body ml-2 d-none d-lg-block">
+            <span class="mb-0 text-sm  font-weight-bold">{{assure.firstname}}</span>
+          </div>
+
+               <button (click)="logout()" mat-button ><mat-icon>logout</mat-icon></button>
+
+        </div>
+
+
+</mat-toolbar>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+
+<body>
+  <div class="main-content">
+    <!-- Top navbar -->
+    <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
+      <div class="container-fluid">
+        <!-- Brand -->
+        <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="https://www.creative-tim.com/product/argon-dashboard" target="_blank">User profile</a>
+        <!-- Form -->
+
+        <!-- User -->
+
+      </div>
+    </nav>
+    <!-- Header -->
+    <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 600px; background-image: url(https://raw.githubusercontent.com/creativetimofficial/argon-dashboard/gh-pages/assets-old/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
+      <!-- Mask -->
+      <span class="mask bg-gradient-default opacity-8"></span>
+      <!-- Header container -->
+      <div class="container-fluid d-flex align-items-center">
+        <div class="row">
+          <div class="col-lg-7 col-md-10">
+            <h1 class="display-2 text-white">Hello {{assure.firstname}} </h1>
+            <p class="text-white mt-0 mb-5">This is your profile page. You can see the progress you've made with your work and manage your projects or assigned tasks</p>
+            <button class="btn btn-info" (click)="toggleDiv()">Edit profile</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Page content -->
+    <div *ngIf="showDiv">
+
+    <div class="submit-form">
+      <div *ngIf="!submitted">
+        <!-- Page content -->
+        <div class="container-fluid mt--7">
+          <div class="row">
+
+            <div class="col-xl-11 order-xl-1">
+              <div class="card bg-secondary shadow">
+
+                <div class="card-header bg-white border-0">
+                  <div class="row align-items-center">
+                    <div class="col-8">
+                      <h3 class="mb-0">My account</h3>
+                    </div>
+                    <div class="col-4 text-right">
+
+                    <button class="btn btn-sm btn-primary" (click)="ModifierAssure(assure)">submit
+                    </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <form>
+                    <h6 class="heading-small text-muted mb-4">User information</h6>
+                    <div class="pl-lg-4">
+                      <div class="row">
+                        <div class="col-lg-6">
+                          <div class="form-group focused">
+                            <label class="form-control-label" for="input-username">Username</label>
+                            <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Username" [(ngModel)]="assure.firstname " name="first1" >
+                          </div>
+                        </div>
+                        <div class="col-lg-6">
+                          <div class="form-group">
+                            <label class="form-control-label" for="input-email">Email address</label>
+                            <input type="email" id="input-email" class="form-control form-control-alternative" [(ngModel)]="assure.email" name="first2">
+                          </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                          <div class="form-group">
+                            <label class="form-control-label" for="input-email">Password</label>
+                            <input type="email" id="input-email2" class="form-control form-control-alternative" [(ngModel)]="assure.password"  name="fi">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-6">
+                          <div class="form-group focused">
+                            <label class="form-control-label" for="input-first-name">First name</label>
+                            <input type="text" id="input-first-name" class="form-control form-control-alternative" [(ngModel)]="assure.email" name="fir">
+                          </div>
+                        </div>
+                        <div class="col-lg-6">
+                          <div class="form-group focused">
+                            <label class="form-control-label" for="input-last-name">Last name</label>
+                            <input type="text" id="input-last-name" class="form-control form-control-alternative" [(ngModel)]="assure.lastname" name="df">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <hr class="my-4">
+                    <!-- Address -->
+                    <h6 class="heading-small text-muted mb-4">Contact information</h6>
+                    <div class="pl-lg-4">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group focused">
+                            <label class="form-control-label" for="input-address">Address</label>
+                            <input id="input-address" class="form-control form-control-alternative" [(ngModel)]="assure.addresse" name="df5" type="text">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-4">
+                          <div class="form-group focused">
+                            <label class="form-control-label" for="input-city">Pays</label>
+                            <input type="text" id="input-city" class="form-control form-control-alternative" [(ngModel)]="assure.pays" name="df5p" >
+                          </div>
+                        </div>
+                        <div class="col-lg-4">
+                          <div class="form-group focused">
+                            <label class="form-control-label" for="input-country">Ville</label>
+                            <input type="text" id="input-country" class="form-control form-control-alternative" [(ngModel)]="assure.ville" name="df5v" >
+                          </div>
+                        </div>
+                        <div class="col-lg-4">
+                          <div class="form-group focused">
+                            <label class="form-control-label" for="input-country">Code postal</label>
+                            <input type="text" id="input-hcountry" class="form-control form-control-alternative" [(ngModel)]="assure.codePostal" name="df5v" >
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <hr class="my-4">
+                    <!-- Description -->
+                    <h6 class="heading-small text-muted mb-4">About me</h6>
+                    <div class="pl-lg-4">
+                      <div class="form-group focused">
+                        <label>datede naissance</label>
+                        <input rows="4" class="form-control form-control-alternative" [(ngModel)]="assure.dateNaissance" name="df5ghfv">
+                      </div>
+                      <div class="form-group focused">
+                        <label>regime</label>
+                        <input rows="4" class="form-control form-control-alternative" [(ngModel)]="assure.regime" name="df5aaav">
+                      </div>
+                      <div class="form-group focused">
+                        <label>Etat civil</label>
+                        <input rows="4" class="form-control form-control-alternative" [(ngModel)]="assure.etatCivil" name="ddesf5v">
+                      </div>
+                      <div class="form-group focused">
+                        <label>Civilite</label>
+                        <input rows="4" class="form-control form-control-alternative"[(ngModel)]="assure.civilite" name="df5azev">
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+    </div>
+      </div>
+
+
+</body>

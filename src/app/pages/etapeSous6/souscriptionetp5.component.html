@@ -1,0 +1,76 @@
+<app-header></app-header>
+<div id="progress" class="progress"></div>
+
+<form #userForm='ngForm'>
+<div class="container" style="text-align: center">
+  <div class="button-container">
+    <button title="etpp5" class="back-btn" routerLink="/etape4">
+      <fa-icon [icon]="icon" class="icon" style="color: #b5b4b4;"></fa-icon>
+    </button>
+    <small class="back-text">Président</small>
+  </div>
+  <h1 class="heading-primary">
+    <span class="heading-primary-green">Vous y êtes </span>
+    presque!
+  </h1>
+  <p class="text">Dites-nous en un peu plus sur vous.</p>
+  <div class="margin-bottom-60"></div>
+
+  <div class="info-block">
+    <div class="info-block-1">
+      <div class="form-group">
+        <label for="" class="text-blod">Mon Prénom</label>
+        <input class="form-group-input" type="text" name="prenom" ngModel required ngModel #prenom="ngModel"  [ngClass]="{'form-control is-invalid':!prenom.valid && prenom.touched}"/>
+        <span style="color:red;" *ngIf="!prenom.valid && prenom.touched"> Veuillez entrer votre prénom</span>
+      </div>
+    </div>
+    <div class="info-block-2">
+      <div class="form-group">
+        <label for="" class="text-blod">Mon Nom</label>
+        <input class="form-group-input" type="text" name="nom" required ngModel #nom="ngModel"  [ngClass]="{'form-control is-invalid':!nom.valid && nom.touched}"/>
+        <span style="color:red;" *ngIf="!nom.valid && nom.touched"> Veuillez entrer votre nom</span>
+      </div>
+    </div>
+    <div class="info-block-3">
+      <div class="form-group">
+        <label for="" class="text-blod">Mon Adresse Email </label>
+        <input class="form-group-input" type="email" name="email" placeholder="nom@acheel.com" ngModel required [email]="true" #email="ngModel" [ngClass]="{'form-control is-invalid':!email.valid && email.touched}"/>
+        <span style="color:red;" *ngIf="!email.valid && email.touched"> Veuillez entrer votre email</span>
+      </div>
+    </div>
+    <div class="info-block-4">
+      <div class="form-group">
+          <label for="" class="text-blod">Mon Numéro De Moblie</label>
+          <span class=""></span>
+          <input type="tel" class="iconfr form-group-input" name="numero" [(ngModel)]="numeroValue" required [pattern]="numeroPattern" #numero="ngModel" [ngClass]="{'form-control is-invalid': !numero.valid && numero.touched} " />
+          <span style="color:red;" *ngIf="!numero.valid && numero.touched">Veuillez entrer un numéro de 9 chiffres</span>
+      </div>
+    </div>
+    <div class="info-block-5" style="display: flex">
+      <input type="checkbox" class="form-check-input" style="flex-shrink: 0" />
+      <span class="text">
+        Oui, je souhaite recevoir par SMS et/ou email les actualités et les
+        offres de la part d&apos;Acheel. check
+      </span>
+    </div>
+    <div class="info-block-6 margin-bottom-40" style="display: flex">
+      <input type="checkbox" class="form-check-input" style="flex-shrink: 0" />
+      <span class="text">
+        J&apos;accepte les <a href="https://openclassrooms.com/fr/"> générales d'utilisation </a> et que les
+        données collectées ci-dessus soient utilisées par Acheel France pour
+        me recontacter afin de finaliser ma souscription.
+      </span>
+    </div>
+  </div>
+  <input type="submit" value="Découvrir Mes Offres" class="button-primary">
+<!-- *ngIf="userForm.valid"-->
+</div>
+<div class=" footer-container">
+  <p class="footer-text">kewee collecte vos données a caractere personnel afin de vous proposer un contrat adapté a votre situation et proceder a la souscription et l'excution de votre contrat d'assurance. Vos doonnés sont
+    également collectées à des fins de proposition commerciale, le cas échéant. vous pouvez zxercer l'encemble de vos droits : retirer votre consentement, exercer vos droits d'accés, de rectification, de
+     limitation, d'effacement, de portabilité et donner des directives post-morten pour vos données a l'adrresse suivantes: <a href="https://www.kiwi.com/en/help/contact/"> contact@kewee.com.</a> Pour tout savoir, consulter notre <a href="">Politique de confidentialité.</a>
+  </p>
+   <br>
+  <p class="footer-text"> kewee est une Sociétè par action simplifiée à associé unique au capital de 000,00 100 euros et est immatriculée au Registre ORIAS sous le n°21003575</p>
+</div>
+</form>
