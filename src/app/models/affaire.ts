@@ -13,12 +13,13 @@ export class Affaire {
 
     dateSignature!: String ;
 
-    souscription!: Souscription ;
+    souscriptionDto!: Souscription ;
 
     assureDto!: Assure ;
 
     conjointDto!: Conjoint ;
 
 
-    enfants!: Set<Enfant> ;
+    enfantDto!: Set<Enfant> ;
+
 }

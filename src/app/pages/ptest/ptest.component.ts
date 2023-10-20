@@ -9,53 +9,29 @@ import { AssureService } from 'src/app/services/assure.service';
 import { EtapeService } from 'src/app/services/etape.service';
 import { ParcoursService } from 'src/app/services/parcours.service';
 import Swal from 'sweetalert2';
-
+interface CoupleDateRegime {
+  dateNaissance: string;
+  regime: string;
+}
 @Component({
   selector: 'app-ptest',
   templateUrl: './ptest.component.html',
   styleUrls: ['./ptest.component.css']
 })
-export class PtestComponent implements OnInit{
-  affaires! : Affaire[]
-  id!:number;
-idA:any
-assure!: Assure;
+export class PtestComponent {
 
-  constructor(private router:Router, private assureService : AssureService, private affaireService : AffaireService,private route:ActivatedRoute ){}
-    ngOnInit(): void {
-      this.id= Number(this.route.snapshot.paramMap.get('id'));
-      this.idA= localStorage.getItem('userId')
+  coupleList: CoupleDateRegime[] = [];
 
-      this.AffaireByAssure(this.idA);
+  ajouterChamp(): void {
+    this.coupleList.push({ dateNaissance: '', regime: '' });
   }
 
-  AffaireByAssure(id: any){
-    this.affaireService.listAffairesByAssure(id).subscribe(
-      {
-        next:(data)=>{
-          this.affaires =data
-          console.log(data)
-
-        },
-        error:(err)=>{
-          alert("error")
-        }
-      }
-    )
+  supprimerChamp(): void {
+    this.coupleList.pop();
   }
 
-
-  logout(){
-    localStorage.clear()
-    this.router.navigate(["/log"])
-
+  valider(): void {
+   
+    console.log(this.coupleList);
   }
-
-  }
-
-
-
-
-
-
-
+}

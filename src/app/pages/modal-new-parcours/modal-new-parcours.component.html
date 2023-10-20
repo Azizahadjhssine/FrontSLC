@@ -1,0 +1,26 @@
+<h2 mat-dialog-title>Ajout parcours</h2>
+<mat-dialog-content>
+
+  <form class="user">
+    <div class="form-group">
+        <input type="text" class="form-control form-control"
+          aria-describedby="emailHelp" name="name"
+            placeholder="Name" [(ngModel)]="parcours.name">
+    </div>
+<br>
+    <div class="form-group">
+        <input type="text" class="form-control form-control-user" name="description"
+            id="exampleInputPeriode" placeholder="Description" [(ngModel)]="parcours.desciption">
+    </div>
+
+    <button  style="margin-top:20px;margin-left:110px;" class="btn btn-primary btn-user btn-block" (click)=" AjouterParcours(parcours)">
+      <i class="fas fa-check"></i> Save
+    </button>
+    <hr>
+
+</form>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Fermer</button>
+</mat-dialog-actions>

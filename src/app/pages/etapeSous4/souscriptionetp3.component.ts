@@ -16,7 +16,7 @@ export class Souscriptionetp3Component implements OnInit {
    icon=faArrowLeftLong;
    id!:number;
    souscription!: Souscription;
-
+   regime!:string;
  constructor(private userService:UserPresInscServiceService,private sousService:SouscriptionService,private route:ActivatedRoute,private router:Router){
    this.dateNaissanceuser = null;
  }
@@ -43,12 +43,12 @@ export class Souscriptionetp3Component implements OnInit {
 
 ModifierSouscription(){
   this.souscription.lastStep="etape 4"
-  this.souscription.data=this.souscription.data+"Assuré:{ Date de naissance:"+this.dateNaissanceuser+" regime assuré:}"
+  this.souscription.data=this.souscription.data+', "Assure ": { "Date de naissanceAssure" :'+'"'+this.dateNaissanceuser+'"'+',  "regime " :'+'"'+ this.regime+'"}'
 
   this.sousService.ajoutersous(this.souscription)
   .subscribe({
     next: (res)=>{
-      
+
     console.log(res);
     },
 
@@ -57,7 +57,10 @@ ModifierSouscription(){
 
 }
 
+navigateToPreviousPage(){
+  this.router.navigate(['/etape3', this.id]);
 
+}
 
 
 
@@ -110,8 +113,9 @@ ModifierSouscription(){
   }
 
 
-  getRegime(regime:string){
-    this.userService.setRegime(regime)
+  getRegime(r:string){
+    this.userService.setRegime(r)
+   this.regime= r;
   }
 
 

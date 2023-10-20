@@ -17,9 +17,9 @@
     <div>
       <h2 class="heading-primary">Combien d’enfants avez-vous ?</h2>
       <div class="children-count">
-        <button (click)="decrementCounter()">-</button>
-        <input class="form-group-input" type="text" value={{counter}} id="counter" />
-        <button (click)="incrementCounter()">+</button>
+        <button (click)="supprimerChamp()">-</button>
+        <input class="form-group-input" type="text" value={{counter}} id="counterr" />
+        <button (click)="ajouterChamp()">+</button>
       </div>
     </div>
 
@@ -27,15 +27,15 @@
       Quelle est sa date de naissance et son régime assuré ?
     </h2>
 
-    <div id="enfantInfo" *ngFor="let input of inputs">
+    <div *ngFor="let couple of coupleList; let i = index">
       <div class="parent">
         <div class="div1">
           <div class="form-group" style="width: 100%">
-            <input class="date-input form-group-input" type="date" name="" id="" style="font-size: inherit !important; text-transform: uppercase;" [(ngModel)]="NaissanceEnfant"/>
+            <input class="date-input form-group-input" type="date" name="" id="" style="font-size: inherit !important; text-transform: uppercase;" [(ngModel)]="couple.dateNaissance"/>
           </div>
         </div>
         <div class="div2">
-          <select class="form-group-input drop-down" name="cars" id="cars">
+          <select class="form-group-input drop-down" name="cars" id="cars" [(ngModel)]="couple.regime">
             <option value="Sécurité Sociale">Sécurité Sociale</option>
             <option value="Travailleur non salarié">Travailleur non salarié </option>
             <option value="Régime Agricole">Régime Agricole</option>

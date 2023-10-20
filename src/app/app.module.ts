@@ -49,6 +49,11 @@ import { Souscriptionetp4Component } from './pages/etapeSous5/souscriptionetp4.c
 import { Souscriptionetp5Component } from './pages/etapeSous6/souscriptionetp5.component';
 import { AjoutEnfantComponent } from './pages/ajout-enfant/ajout-enfant.component';
 import { EtapEmailComponent } from './pages/etap-email/etap-email.component';
+import { ModalNewParcoursComponent } from './pages/modal-new-parcours/modal-new-parcours.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ModalDetailAffaireComponent } from './pages/modal-detail-affaire/modal-detail-affaire.component';
+import { EtapeOffresComponent } from './pages/etape-offres/etape-offres.component';
+import { ModalDevisComponent } from './pages/modal-devis/modal-devis.component';
 
 
 @NgModule({
@@ -84,7 +89,11 @@ import { EtapEmailComponent } from './pages/etap-email/etap-email.component';
     Souscriptionetp4Component,
     Souscriptionetp5Component,
     AjoutEnfantComponent,
-    EtapEmailComponent
+    EtapEmailComponent,
+    ModalNewParcoursComponent,
+    ModalDetailAffaireComponent,
+    EtapeOffresComponent,
+    ModalDevisComponent,
 
   ],
   imports: [
@@ -105,6 +114,7 @@ import { EtapEmailComponent } from './pages/etap-email/etap-email.component';
     MatFormFieldModule,
     MatSelectModule,
     FontAwesomeModule,
+    MatDialogModule
   ],
   providers: [{provide :HTTP_INTERCEPTORS, useClass:AuthIntercepterService,multi :true}],
   bootstrap: [AppComponent]

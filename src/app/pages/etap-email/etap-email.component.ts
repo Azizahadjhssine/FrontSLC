@@ -17,7 +17,7 @@ export class EtapEmailComponent {
   //parcoursDto!:Parcours;
   parcoursDto = new Parcours();
   isDataSelected: boolean = false;
-ss!:number;
+  ss!:number;
   souscription:Souscription=new Souscription();
 icon=faArrowLeftLong;
 iconMail=faEnvelope;
@@ -33,18 +33,20 @@ navigateToPreviousStep(){
 }
 
   AjoutSouscription(){
-   this.parcoursDto.id=1;
+    this.parcoursDto.id=1;
     console.log("Ajouter email souscription  "+this.emailSouscription)
     const s={
       id: 0,
-      data:"Assuré :Email Assure: "+this.emailSouscription,
+      data:'{"Email Assure" : "'+this.emailSouscription+'"' ,
       lastStep:"etape2",
       parcoursDto:this.parcoursDto
         }
-    console.log("soussss"+s)
-    console.log("id souscription"+s.id)
+    //console.log("soussss"+s)
+    //console.log("id souscription"+s.id)
     this.sousService.ajoutersous(s).subscribe({
      next : data=>{alert("souscription saved");
+     this.router.navigate(['/etape3', data.id]);
+
         this.ss = data.id;
         console.log("id "+this.ss)
     },
@@ -53,12 +55,14 @@ navigateToPreviousStep(){
   })
   console.log("soussss"+this.ss)
    console.log(s.data);
-    this.navigateToNextPage()
+   // this.navigateToNextPage(this.ss)
+    //this.router.navigate(['/etape3', 180]);
 
   }
 
-navigateToNextPage(){
-
+ navigateToNextPage(id:any){
+  this.AjoutSouscription()
+  console.log("id navvv",this.ss)
   this.router.navigate(['/etape3', this.ss]);
 
 }

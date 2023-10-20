@@ -7,16 +7,16 @@
   </a>
 
   <span class="example-spacer"></span>
-  <button routerLink="/affaireByAssure/idA" mat-button style="margin-left: 200px;">Mes souscriptions</button>
+  <button routerLink="/affaireByAssure/idA" mat-button style="margin-left: 300px;">Mes souscriptions d'affaires</button>
 
 
 
-        <div class="media align-items-center" style="margin-left: 750px;">
+        <div class="media align-items-center" style="margin-left: 500px;">
           <span class="avatar avatar-sm rounded-circle">
             <img alt="Image placeholder" src="https://demos.creative-tim.com/argon-dashboard/assets-old/img/theme/team-4.jpg">
           </span>
           <div class="media-body ml-2 d-none d-lg-block">
-            <span class="mb-0 text-sm  font-weight-bold">{{assure.firstname}}</span>
+            <span class="mb-0 text-sm  font-weight-bold">{{assure.firstname}}{{assure.lastname}}</span>
           </div>
 
                <button (click)="logout()" mat-button ><mat-icon>logout</mat-icon></button>

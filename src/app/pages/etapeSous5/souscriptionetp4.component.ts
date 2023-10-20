@@ -37,7 +37,7 @@ export class Souscriptionetp4Component implements OnInit{
 
 ModifierSouscription(){
   this.souscription.lastStep="etape 4"
-  this.souscription.data=this.souscription.data+",adresse :"+this.adresse
+  this.souscription.data=this.souscription.data+', "adresse ":'+'"'+this.adresse+'"'
 
   this.sousService.ajoutersous(this.souscription)
   .subscribe({
@@ -54,9 +54,9 @@ ModifierSouscription(){
   if (selectedOption==='moi') {
     this.router.navigate(['/etape4', this.id]);
   }else if(selectedOption === 'conjoint' ){
-    this.router.navigate(['/conjoint'])
+    this.router.navigate(['/conjoint', this.id]);
   }else if(selectedOption==='moiEnfant'|| selectedOption === 'conjointMoiEnfant'){
-    this.router.navigate(['/enfant'])
+    this.router.navigate(['/enfant',this.id])
   }
   console.log(this.userService.getOption())
   }

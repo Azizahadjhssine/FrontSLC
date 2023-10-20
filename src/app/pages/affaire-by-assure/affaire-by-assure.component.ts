@@ -15,7 +15,7 @@ export class AffaireByAssureComponent  implements OnInit{
   id!:number;
 idA:any
 assure!: Assure;
-
+fullname!:string
   constructor(private router:Router, private assureService : AssureService, private affaireService : AffaireService,private route:ActivatedRoute ){}
     ngOnInit(): void {
       this.id= Number(this.route.snapshot.paramMap.get('id'));
@@ -30,6 +30,7 @@ assure!: Assure;
         next:(data)=>{
           this.affaires =data
           console.log(data)
+          
 
         },
         error:(err)=>{

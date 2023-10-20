@@ -16,6 +16,7 @@ export class AjoutConjointComponent implements OnInit{
  icon=faArrowLeftLong;
  souscription!:Souscription;
  id!:number;
+ regime!:string
   constructor(private userService:UserPresInscServiceService,private sousService:SouscriptionService,private route:ActivatedRoute,private router:Router){
     this.dateNaissanceConjoint= null;
   }
@@ -24,7 +25,10 @@ export class AjoutConjointComponent implements OnInit{
   this.findSouscriptionById(this.id);
 
 }
+navigateToPreviousPage(){
+  this.router.navigate(['/etape4', this.id]);
 
+}
 
 
 findSouscriptionById(id:any){
@@ -52,6 +56,7 @@ this.sousService.findSouscription(id).subscribe({
 
    getRegimeConjoint(regime:string){
     this.userService.setRegimeConjoint(regime)
+    this.regime=regime
   }
   navigateToNextPage(){
     let selectedOption=this.userService.getOption()
@@ -65,7 +70,8 @@ this.sousService.findSouscription(id).subscribe({
     }
     ModifierSouscription(){
       this.souscription.lastStep="etape conjoint"
-      this.souscription.data=this.souscription.data+"Conjoint:{ Date de naissance: "+this.dateNaissanceConjoint+",  regime conjoint:}"
+      this.souscription.data=this.souscription.data+', "conjoint" : { "Date de naissance" :'+'"'+this.dateNaissanceConjoint+'"'+',  "regime " :'+'"'+ this.regime+'"}'
+
 
       this.sousService.ajoutersous(this.souscription)
       .subscribe({

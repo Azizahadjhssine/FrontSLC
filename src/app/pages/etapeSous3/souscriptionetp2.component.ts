@@ -17,7 +17,8 @@ export class Souscriptionetp2Component implements OnInit{
   selectdate:Date;
   isDateSelected: boolean = false;
   icon=faArrowLeftLong;
-//  parcour:Parcours= new Parcours();
+previousSouscription1!:Souscription
+  //  parcour:Parcours= new Parcours();
 souscription!: Souscription;
 
   constructor(private userService:UserPresInscServiceService, private sousService:SouscriptionService,private route:ActivatedRoute,private router:Router){
@@ -32,12 +33,15 @@ souscription!: Souscription;
     console.log("id de souscription  "+this.id);
     this.userService.setDateDebutContrat(this.selectdate)
      this.findSouscriptionById(this.id);
+     this.previousSouscription1=this.souscription;
+     console.log("previous",this.previousSouscription1)
 }
 findSouscriptionById(id:any){
  this.sousService.findSouscription(id).subscribe({
 
     next:data=>{this.souscription=data
       console.log('find souscription', this.souscription.id)
+      console.log("previous",this.previousSouscription1)
 
     }
 
@@ -57,7 +61,7 @@ onDateSelected(){
 }
 
 ModifierSouscription(){
-  this.souscription.data="{ Date de debut de contrat"+this.selectdate+this.souscription.data
+  this.souscription.data=this.souscription.data+' , "Date de debut de contrat" : "'+this.selectdate+'"'
   this.souscription.lastStep="etape 3"
 
   this.sousService.ajoutersous(this.souscription)

@@ -1,0 +1,27 @@
+<h2 mat-dialog-title>Détails parcours  {{id}}</h2>
+<mat-dialog-content>
+Assure:
+
+Regime :  {{affaire.assureDto.regime}}
+  <br>
+  Date de naissance:{{affaire.assureDto.dateNaissance}}
+<hr>
+Conjoint:
+
+  Date de naissance: {{affaire.conjointDto.dateNaissance}}
+  <br>
+  Regime : {{affaire.conjointDto.regimeConj}}
+<hr>
+  Enfant
+  <br>
+  <div *ngFor="let enf of affaire.enfantDto; let i = index" class="col-md-6 col-xl-5">
+    Enfant {{i+1}}:  {{enf.firstname}} {{enf.lastname}}
+
+    Date de naissance: {{ enf.dateNaissance}}
+    Regime :  {{enf.regimeEnf}}
+   <hr>
+</div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>valider</button>
+</mat-dialog-actions>

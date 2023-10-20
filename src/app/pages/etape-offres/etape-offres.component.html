@@ -1,0 +1,36 @@
+<app-header></app-header>
+
+<div id="progress" class="progress"></div>
+
+<div class="container" style="text-align: center">
+  <div>
+    <div class="button-container">
+      <button title="etp3"class="back-btn" >
+        <fa-icon  class="icon" style="color: #b5b4b4;"></fa-icon>
+      </button>
+    </div>
+    <small class="back-text" >Précédent</small>
+    </div>
+
+
+  <h1 class="heading-primary">
+    <span class="heading-primary-green">Je choisis</span> mon offre
+  </h1>
+
+  <table class="tabitems">
+    <tr class="priceitem" *ngFor="let offre of valeurReponse ; index as i">
+      <td><input type="image" src="https://compara.slc-assurances.fr/images/{{ offre['logo'] }}"></td>
+      <td>
+        <p>{{ offre['name'] }}</p>
+        <p>{{ offre['niveau'] }}</p>
+        <p class="price">{{ offre['price'] }}€</p>
+        <span>par mois</span>
+      </td>
+      <td>Dentaire: {{ offre['garanties'][20].valeur }}</td>
+      <td>Optique: {{ offre['garanties'][25].valeur }}</td>
+      <td>Hospitalisation: {{ offre['garanties'][0].valeur }}</td>
+      <td><input (click)="sendEmailPdf(offre['price'],offre['niveau'],offre['name'],offre['logo'],offre['garanties'] )" type="submit" value="JE SOUSCRIS" class="button-primary"></td>
+
+    </tr>
+  </table>
+

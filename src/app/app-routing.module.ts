@@ -33,6 +33,7 @@ import { Souscriptionetp5Component } from './pages/etapeSous6/souscriptionetp5.c
 import { AjoutEnfantComponent } from './pages/ajout-enfant/ajout-enfant.component';
 
 import { EtapEmailComponent } from './pages/etap-email/etap-email.component';
+import { EtapeOffresComponent } from './pages/etape-offres/etape-offres.component';
 
 
 const routes: Routes = [
@@ -54,7 +55,7 @@ const routes: Routes = [
   {path:"homeAdmin",component: HomeAdminComponent},
   {path:"homeAssure",component: HomeAssureComponent},
   {path:"affaire",component: AffaireComponent},
-  {path:"test/:id",component: PtestComponent},
+  {path:"test",component: PtestComponent},
   {path:"detailParcours/:id",component: DetailsParcoursComponent},
   {path:"log",component: TestLoginComponent},
   {path:"profileHomeAssure",component: ProfileHomeAssureComponent},
@@ -70,6 +71,7 @@ const routes: Routes = [
   {path:"etape4/:id",component: Souscriptionetp3Component},
   {path:"etape5/:id",component: Souscriptionetp4Component},
   {path:"etape6/:id",component: Souscriptionetp5Component},
+  {path:"etapeOffres/:id",component: EtapeOffresComponent},
 
 
 ];

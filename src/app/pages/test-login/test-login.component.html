@@ -1,8 +1,31 @@
-<section class="vh-100"  style="background-size: cover; background-repeat: no-repeat; background-position: center center;
-                           background-image: url('https://www.slc-assurances.fr/actualites/image/large/habitation-actualite.png'); text-align: center; min-height: 600px;" >
-  <div class="container py-5 h-100">
 
-  <div class="card text-white mb-3" style="height: 25rem; max-width: 20rem; background-color:rgba(0, 0, 0, 0.7); margin-left: 15px; margin-top: 120px;" >
+<section class="vh-100"  style="background-size: cover; background-repeat: no-repeat; background-position: center center;
+                           background-image: url('https://www.slc-assurances.fr/actualites/image/large/habitation-actualite.png'); text-align: center; min-height: 200px;" >
+                           <div style="margin-left:500px;">
+                            <h5 style="margin-left:650px; "(click)="afficherChamps()"><u><i>Login Admin</i></u></h5>
+                             <div *ngIf="afficherChampsFlag" style="margin-left:300px; ">
+
+                          <form class="example-form">
+                          <mat-form-field class="example-full-width" appearance="fill">
+                          <mat-label>User Name</mat-label>
+                          <input matInput placeholder="Enter your name" name="usename" [(ngModel)]= "authenticationRequest.email"  >
+                          </mat-form-field>
+                          <mat-form-field class="example-full-width" appearance="fill">
+                          <mat-label>Password</mat-label>
+                          <input matInput placeholder="Enter your password" value="" name="password" type="password" [(ngModel)]= "authenticationRequest.password">
+                          </mat-form-field>
+                          <button mat-raised-button color="primary" (click)="loginAdmin()">Submit</button>
+                          <span *ngIf="showAdmin"> <button mat-button color="accent">Vous n'etes pas autorisés !!</button></span>
+                          </form>
+                          </div>
+
+                          </div>
+
+
+
+                           <div class="container py-5 h-150">
+
+  <div class="card text-white mb-3" style="height: 26rem; max-width: 20rem; background-color:rgba(0, 0, 0, 0.7); margin-left: 15px; margin-top: 40px;" >
       <div class="card-body ">
         <div class="px-5 ms-xl-4">
           <i class="fas fa-crow fa-2x me-3 pt-5 mt-xl-4" style="color: #709085;"></i>
@@ -12,6 +35,10 @@
         <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
         <p class="text-white-50 mb-5">Please enter your login and password!</p>
                              <form class="user">
+                              <span *ngIf="showAssure">
+                                <button mat-button color="accent">login or password incorrect !!</button>
+                              </span>
+
                          <div class="form-group">
                                <input type="email" class="form-control form-control-user"
                                          id="exampleInputEmail" aria-describedby="emailHelp" name="email"
@@ -38,13 +65,13 @@
 </div>
 
   </div>
-
-  <div
-  class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
-  <!-- Copyright -->
-  <div class="text-white mb-3 mb-md-0">
-    Copyright © 2020. All rights reserved.
-  </div>
-  <!-- Copyright -->
+  <div class="footer">
+    <!-- Copyright -->
+    <div class="text-white mb-3 mb-md-0">
+      Copyright © 2023. All rights reserved.
+    </div>
   </div>
 </section>
+
+
+

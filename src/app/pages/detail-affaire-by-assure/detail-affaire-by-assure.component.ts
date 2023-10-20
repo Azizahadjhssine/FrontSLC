@@ -19,15 +19,20 @@ export class DetailAffaireByAssureComponent implements OnInit{
   idA:any
   assure!: Assure;
   submitted=false;
-  enfantss!:Set<Enfant>;
+
+  //enfantss!:Set<Enfant>;
+  enfantss!:any
+
   objectKeys = Object.entries;
   constructor(private router:Router, private route:ActivatedRoute,private affaireService:AffaireService,private assureService:AssureService, private conjointService :ConjointService,private enfantService : EnfantService) {
- }
+  }
   ngOnInit(): void {
     this.id= Number(this.route.snapshot.paramMap.get('id'));
     console.log(this.id);
     this.findAffaire(this.id);
-    console.log('enfants:' , this.findAffaire(this.id))
+    console.log('affaire:' , this.findAffaire(this.id))
+    console.log('assure:' , this.findAffaire(this.id))
+
   }
 
   findAffaire(id:any){
@@ -35,9 +40,9 @@ export class DetailAffaireByAssureComponent implements OnInit{
       {
         next:(data)=>{
           this.affaire=data
-          this.enfantss = data.enfants;
+          this.enfantss = data.enfantDto;
 
-          console.log("enfants", this.enfantss)
+          console.log("enfantsuu", this.enfantss)
           //this.enfantss=this.affaire.enfants
 
         },

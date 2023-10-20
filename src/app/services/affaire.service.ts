@@ -24,5 +24,8 @@ export class AffaireService {
     return this.http.get<Affaire>(`${this.localUrl}/findOne/${id}`)
 
   }
+  saveAffaire(aff:Affaire):Observable<Affaire>{
+    return this.http.post<Affaire>(`${this.localUrl}/save`,aff)
+  }
 
 }

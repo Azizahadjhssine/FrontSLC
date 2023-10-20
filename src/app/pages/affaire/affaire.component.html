@@ -1,57 +1,47 @@
-<p>affaire works!</p>
-<mat-toolbar color="primary" class="mat-elevation-z8">
+<mat-toolbar color="secondary" class="mat-elevation-z8">
   <button (click)="drawer.toggle()" mat-icon-button>
-      <mat-icon>menu</mat-icon>
+    <mat-icon>menu</mat-icon>
   </button>
-  <span>Gestion-SlcParcours</span>
+  <a href="https://www.slc-assurances.fr" target="_blank">
+    <img src="https://www.slc-assurances.fr/image/logo-slc.png" alt="Logo cliquable" style="width: 200px; height: auto;">
+  </a>
+
   <span class="example-spacer"></span>
-  <button routerLink="/homeAdmin" mat-button style="margin-left: 20px;"><mat-icon>home</mat-icon>Home</button>
-  <button  mat-button><mat-icon>person</mat-icon>Profile</button>
+
+  <span style="margin-left: 900px;">{{fullname}}</span>
+  <span class="example-spacer"></span>
 
 
-  <button routerLink="input" mat-button style="margin-left: 500px;"><mat-icon>search</mat-icon>search</button>
-
+  <button (click)="logout()" mat-button ><mat-icon>logout</mat-icon></button>
 </mat-toolbar>
 <mat-drawer-container autosize style="background-color:rgb(227, 221, 235)" >
-  <mat-drawer #drawer opened="true" mode="side" position="start" style="background-color:rgb(54, 68, 119)">
+  <mat-drawer #drawer opened="true" mode="side" position="start" style="background-color:rgb(184, 184, 188)">
   <mat-nav-list >
 
       <mat-list-item>
-          <button routerLink="/parcours"   mat-button><mat-icon>edit</mat-icon> Parcours</button>
+          <button routerLink="/homeAdmin"  mat-button><mat-icon>home</mat-icon> Home</button>
       </mat-list-item>
       <mat-list-item>
-        <button routerLink="/souscription" mat-button><mat-icon>edit</mat-icon> Affaires</button>
+        <button routerLink="/affaire"  mat-button><mat-icon>edit</mat-icon> Affaires</button>
     </mat-list-item>
       <mat-list-item>
           <button routerLink="/souscription" mat-button><mat-icon>edit</mat-icon> Souscription</button>
       </mat-list-item>
-      <mat-list-item>
-          <button routerLink="/etape" mat-button><mat-icon>edit</mat-icon> Etape</button>
-      </mat-list-item>
-      <mat-list-item>
-          <button routerLink="/question" mat-button><mat-icon>edit</mat-icon> Questions</button>
-      </mat-list-item>
-      <mat-list-item>
-          <button routerLink="/reponse"  mat-button><mat-icon>edit</mat-icon> Reponse</button>
-      </mat-list-item>
-      <mat-list-item>
-        <button mat-button><mat-icon>edit</mat-icon> Assurés</button>
-    </mat-list-item>
-      <mat-list-item>
-          <button routerLink="/conjoint" mat-button><mat-icon>edit</mat-icon> Conjoint</button>
-      </mat-list-item>
-      <mat-list-item>
-        <button  routerLink="/enfant" mat-button><mat-icon>edit</mat-icon> Enfant</button>
-    </mat-list-item>
+
+
 
   </mat-nav-list>
   </mat-drawer>
+  <mat-drawer-content >
+
+
+<mat-drawer-container autosize style="background-color:rgb(227, 221, 235)" >
+
   <mat-drawer-content >
       <div style="text-align: center;min-height: 600px;" >
 <div class="container" id="main-container">
 <br>
 
-    <a  class="btn btn-secondary" style="margin-left: 600px;"><mat-icon>add</mat-icon> New</a>
 
 <br><br><br>
        <table class="table table-striped" style="background-color:rgb(238, 234, 239)">
@@ -59,17 +49,13 @@
             <tr>
               <th scope="col">id</th>
               <th scope="col">idaff</th>
-
-
               <th scope="col">statut</th>
               <th scope="col">Origine</th>
               <th scope="col">dateEffet</th>
               <th scope="col">dateSignature</th>
               <th scope="col">Assure</th>
               <th scope="col">Conjoint</th>
-              <th scope="col">Enfants</th>
               <th scope="col">Action</th>
-
             </tr>
           </thead>
           <tbody>
@@ -81,17 +67,14 @@
               <td>{{aff.origine}}</td>
               <td>{{aff.dateEffet}}</td>
               <td>{{aff.dateSignature}}</td>
-              <td>{{aff.assureDto}}</td>
-              <td>{{aff.conjointDto.lastname}} {{aff.conjointDto.firstname}}</td>
-              <td>{{aff.enfants}}</td>
+              <td> </td>
+              <td></td>
               <td >
 
                 <div class="btn-group btn-group-sm">
-                  <button mat-fab color="primary" aria-label="Example icon button with a delete icon">
-                    <mat-icon>delete</mat-icon>
-                  </button>
-                  <button mat-fab color="primary" aria-label="Example icon button with a delete icon" style="margin-left: 20px;">
-                    <mat-icon>edit</mat-icon>
+
+                  <button (click)="openModal(aff.id)" mat-fab color="secondary" aria-label="Example icon button with a delete icon" style="margin-left: 20px;">
+                    <mat-icon>touch_app</mat-icon>
                   </button>
                 </div>
               </td>

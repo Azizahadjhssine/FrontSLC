@@ -5,6 +5,7 @@ import { Parcours } from 'src/app/models/parcours';
 import { Question } from 'src/app/models/question';
 import { Reponse } from 'src/app/models/reponse';
 import { EtapeService } from 'src/app/services/etape.service';
+import { ModalNewParcoursService } from 'src/app/services/modal-new-parcours.service';
 import { ParcoursService } from 'src/app/services/parcours.service';
 import { QuestionService } from 'src/app/services/question.service';
 import { ReponseService } from 'src/app/services/reponse.service';
@@ -19,7 +20,7 @@ export class DetailsParcoursComponent implements OnInit{
   submitted=false;
   submitted2=false;
   submitted3=false;
-
+  fullname:any
   id!:number;
   iddep:any;
   //departement!:Departement;
@@ -43,16 +44,25 @@ export class DetailsParcoursComponent implements OnInit{
   keys !:any
  t!:number
  showContent :boolean = false;
-  constructor(private parcoursservice: ParcoursService ,private etapeService: EtapeService, private questionService :QuestionService,private reponseService :ReponseService,private route:ActivatedRoute , private router:Router ) {
+  constructor(private modalService: ModalNewParcoursService,private parcoursservice: ParcoursService ,private etapeService: EtapeService, private questionService :QuestionService,private reponseService :ReponseService,private route:ActivatedRoute , private router:Router ) {
     this.items.forEach(() => this.hideDiv.push(true));
   }
 
+  openModal(): void {
+    this.modalService.openModal();
+  }
   toggleDivquestion(index: number) {
     this.hideDiv[index] = !this.hideDiv[index];
   }
+  logout(){
+    localStorage.clear()
+    this.router.navigate(["/log"])
 
+  }
 
   ngOnInit(): void {
+    this.fullname =localStorage.getItem('fullname')
+
     this.id= Number(this.route.snapshot.paramMap.get('id'));
       this.findParcours(this.id)
       this.findEtape(this.id)
@@ -65,6 +75,16 @@ export class DetailsParcoursComponent implements OnInit{
 
     deleteData(id: number) {
       if (id != undefined && id != null) {
+          // Vérifier si le parcours contient des étapes
+      this.questionService.findQuestionByEtape(id).subscribe(hasQ => {
+        if (hasQ.length > 0) {
+          Swal.fire({
+            title: 'Impossible de supprimer',
+            text: 'Cette etape contient des questions. Supprimez d\'abord les questions.',
+            icon: 'error',
+            confirmButtonText: 'Fermer'
+          });
+        } else {
         Swal.fire({
           title: 'Êtes-vous sûr?',
           text: 'Vous ne pourrez pas récupérer ce etape!',
@@ -76,17 +96,57 @@ export class DetailsParcoursComponent implements OnInit{
           if (result.value) {
             this.etapeService.deleteEtape(id).subscribe(res => {
 
-            })
+            });
             Swal.fire(
               'Supprimé!',
               'Votre etape a été supprimé.',
               'success'
-            )
+            );
           }
+        });
 
-        })
-      }
+        }
+      });
     }
+  }
+    /*
+
+    deleteParcours(id: number) {
+    if (id != undefined && id != null) {
+      // Vérifier si le parcours contient des étapes
+      this.serviceE.findEtapeByParcours(id).subscribe(hasEtapes => {
+        if (hasEtapes.length > 0) {
+          Swal.fire({
+            title: 'Impossible de supprimer',
+            text: 'Ce parcours contient des étapes. Supprimez d\'abord les étapes.',
+            icon: 'error',
+            confirmButtonText: 'Fermer'
+          });
+        } else {
+          Swal.fire({
+            title: 'Êtes-vous sûr?',
+            text: 'Vous ne pourrez pas récupérer ce parcours',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Oui, supprimez-le!',
+            cancelButtonText: 'Non, gardez-le'
+          }).then((result: any) => {
+            if (result.isConfirmed) {  // Change result.value en result.isConfirmed
+              this.prcService.delete(id).subscribe(res => {
+                this.listerParcours();
+              });
+              Swal.fire(
+                'Supprimé!',
+                'Votre Parcours a été supprimé.',
+                'success'
+              );
+            }
+          });
+        }
+      });
+    }
+  }
+    */
 
     deleteQuestion(id :number){
       if (id != undefined && id != null) {
@@ -258,7 +318,7 @@ findReponse(id:any){
     }
     console.log(prc)
     this.etapeService.ajouteretape(prc).subscribe({
-        next : data=>{alert("parcours saved");},
+        next : data=>{alert("Etape saved");},
         error:err=>{this.errormessage = err.error.message}
 
     })

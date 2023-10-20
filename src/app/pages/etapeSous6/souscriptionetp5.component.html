@@ -20,40 +20,55 @@
     <div class="info-block-1">
       <div class="form-group">
         <label for="" class="text-blod">Mon Prénom</label>
-        <input class="form-group-input" type="text" name="prenom" ngModel required ngModel #prenom="ngModel"  [ngClass]="{'form-control is-invalid':!prenom.valid && prenom.touched}"/>
+        <input class="form-group-input" type="text" name="prenom" ngModel required ngModel #prenom="ngModel" [(ngModel)]="prenomA"  [ngClass]="{'form-control is-invalid':!prenom.valid && prenom.touched}"/>
         <span style="color:red;" *ngIf="!prenom.valid && prenom.touched"> Veuillez entrer votre prénom</span>
       </div>
     </div>
     <div class="info-block-2">
       <div class="form-group">
         <label for="" class="text-blod">Mon Nom</label>
-        <input class="form-group-input" type="text" name="nom" required ngModel #nom="ngModel"  [ngClass]="{'form-control is-invalid':!nom.valid && nom.touched}"/>
+        <input class="form-group-input" type="text" name="nom" required ngModel #nom="ngModel"  [(ngModel)]="nomA" [ngClass]="{'form-control is-invalid':!nom.valid && nom.touched}"/>
         <span style="color:red;" *ngIf="!nom.valid && nom.touched"> Veuillez entrer votre nom</span>
       </div>
     </div>
     <div class="info-block-3">
       <div class="form-group">
-        <label for="" class="text-blod">Mon Adresse Email </label>
-        <input class="form-group-input" type="email" name="email" placeholder="nom@acheel.com" ngModel required [email]="true" #email="ngModel" [ngClass]="{'form-control is-invalid':!email.valid && email.touched}"/>
-        <span style="color:red;" *ngIf="!email.valid && email.touched"> Veuillez entrer votre email</span>
+        <label for="" class="text-blod">Cvilité</label>
+        <input class="form-group-input" type="text" name="prenom"  placeholder="Monsieur /Madame/Mademoiselle" ngModel required ngModel #civilitee="ngModel" [(ngModel)]="civilite"  [ngClass]="{'form-control is-invalid':!civilitee.valid && civilitee.touched}"/>
+        <span style="color:red;" *ngIf="!civilitee.valid && civilitee.touched"> Veuillez entrer votre civilité</span>
       </div>
     </div>
     <div class="info-block-4">
       <div class="form-group">
           <label for="" class="text-blod">Mon Numéro De Moblie</label>
           <span class=""></span>
-          <input type="tel" class="iconfr form-group-input" name="numero" [(ngModel)]="numeroValue" required [pattern]="numeroPattern" #numero="ngModel" [ngClass]="{'form-control is-invalid': !numero.valid && numero.touched} " />
+          <input type="tel" class="iconfr form-group-input" name="civil" [(ngModel)]="num" required [pattern]="numeroPattern" #numero="ngModel" [ngClass]="{'form-control is-invalid': !numero.valid && numero.touched} " />
           <span style="color:red;" *ngIf="!numero.valid && numero.touched">Veuillez entrer un numéro de 9 chiffres</span>
       </div>
     </div>
-    <div class="info-block-5" style="display: flex">
+
+    <div class="info-block-5">
+      <div class="form-group">
+        <label for="" class="text-blod">Mon Mot de passe</label>
+        <input class="form-group-input" type="password" name="m" ngModel required ngModel #mot="ngModel" [(ngModel)]="motDePasse"  [ngClass]="{'form-control is-invalid':!mot.valid && mot.touched}"/>
+        <span style="color:red;" *ngIf="!mot.valid && mot.touched"> Veuillez entrer votre mot de passe</span>
+      </div>
+    </div>
+    <div class="info-block-6">
+      <div class="form-group">
+        <label for="" class="text-blod">Mon etat civil</label>
+        <input class="form-group-input" type="text" name="e" ngModel required ngModel #etat="ngModel" [(ngModel)]="etatCivil"  [ngClass]="{'form-control is-invalid':!etat.valid && etat.touched}"/>
+        <span style="color:red;" *ngIf="!etat.valid && etat.touched"> Veuillez entrer votre etat civil</span>
+      </div>
+    </div>
+    <div class="info-block-7" style="display: flex">
       <input type="checkbox" class="form-check-input" style="flex-shrink: 0" />
       <span class="text">
         Oui, je souhaite recevoir par SMS et/ou email les actualités et les
         offres de la part d&apos;Acheel. check
       </span>
     </div>
-    <div class="info-block-6 margin-bottom-40" style="display: flex">
+    <div class="info-block-8 margin-bottom-40" style="display: flex">
       <input type="checkbox" class="form-check-input" style="flex-shrink: 0" />
       <span class="text">
         J&apos;accepte les <a href="https://openclassrooms.com/fr/"> générales d'utilisation </a> et que les
@@ -62,7 +77,9 @@
       </span>
     </div>
   </div>
-  <input type="submit" value="Découvrir Mes Offres" class="button-primary">
+
+
+  <input type="submit" (click)="ModifierSouscription()" value="Découvrir Mes Offres" class="button-primary">
 <!-- *ngIf="userForm.valid"-->
 </div>
 <div class=" footer-container">

@@ -37,9 +37,12 @@ return false;
       const decodedToken = jwt_decode(token) as any;
       const fullname = decodedToken.fullname;
       localStorage.setItem("fullname", fullname);
+
       const userId = decodedToken.userId;
       localStorage.setItem("userId", userId);
 
+      const role = decodedToken.role;
+      localStorage.setItem("role", role);
 
       const password = decodedToken.password;
       localStorage.setItem("password", password);

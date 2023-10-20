@@ -10,38 +10,22 @@ import { AssureService } from 'src/app/services/assure.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent {
+  username : string ="";
+  password : string ="";
+  afficherChampsFlag = false;
 
-authenticationRequest :AuthenticationRequest=new AuthenticationRequest();
-errorMsg : string="wrong"
-assure!: Assure;
-id!:any
-  constructor(private authService : AuthService, private assureService : AssureService , private router: Router) { }
-
-  ngOnInit(): void {
-
-    localStorage.removeItem("accesstoken")
+  show: boolean= false;
+  submit(){
+  console.log("user name is " + this.username)
+  this.clear();
   }
-
-    login(){
-      console.log(this.authenticationRequest)
-      this.authService.login(this.authenticationRequest).subscribe(
-        {next:ress =>{
-          this.authService.setUserToken(ress)
-          const fullname=localStorage.getItem("fullname")
-              this.id=localStorage.getItem("userId")
-          console.log(fullname)
-          //console.log(ress.token)
-          console.log(ress)
-          this.router.navigate(["/homeAssure"])
-         console.log("bonjur")
-
-        }}
-
-      )
-
-    }
-
-
-
+  clear(){
+  this.username ="";
+  this.password = "";
+  this.show = true;
+  }
+  afficherChamps() {
+    this.afficherChampsFlag = true;
+  }
 }
